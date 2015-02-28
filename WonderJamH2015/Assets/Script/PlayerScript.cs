@@ -23,11 +23,11 @@ public class PlayerScript : MonoBehaviour
     {
         if (frames < moveXFrame)
         {
-            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+            if (Input.GetAxis("Horizontal") > 0)
             {
                 RotateDroite();
             }
-            else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+			else if (Input.GetAxis("Horizontal") < 0)
             {
                 RotateGauche();
             }         
@@ -38,7 +38,7 @@ public class PlayerScript : MonoBehaviour
         }
         frames++;
 
-        if (Input.GetKeyDown(KeyCode.Space)){
+        if (Map.Instance.isStarted() && Input.GetKeyDown(KeyCode.Space)){
             lancerTours();
         }
 
@@ -48,7 +48,7 @@ public class PlayerScript : MonoBehaviour
     void RotateDroite()
     {
         if (rotation < 35 && rotation >= -35) {
-            leTransform.Rotate(Vector3.up, 1);
+			leTransform.Rotate(Vector3.up, Mathf.Abs(Input.GetAxis("Horizontal")));
             rotation++;
           
         }
@@ -57,7 +57,7 @@ public class PlayerScript : MonoBehaviour
     void RotateGauche()
     {
         if (rotation <= 35 && rotation > -35) {
-            leTransform.Rotate(Vector3.down, 1);
+			leTransform.Rotate(Vector3.down, Mathf.Abs(Input.GetAxis("Horizontal")));
             rotation--;
         }
     }

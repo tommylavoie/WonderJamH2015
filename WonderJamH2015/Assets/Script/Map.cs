@@ -15,7 +15,9 @@ public class Map
 {
 	private List<PathNode> nodes;
 	private System.Random random;
+	private bool Started = false;
 	private bool GameOver = false;
+	private bool WaveStarted = false;
 
 
 	private static Map instance;
@@ -100,6 +102,16 @@ public class Map
 		return rand;
 	}
 
+	public bool isStarted()
+	{
+		return Started;
+	}
+	
+	public void setStarted(bool over)
+	{
+		Started = over;
+	}
+
 	public bool isGameOver()
 	{
 		return GameOver;
@@ -108,6 +120,16 @@ public class Map
 	public void setGameOver(bool over)
 	{
 		GameOver = over;
+	}
+
+	public bool isWaveStarted()
+	{
+		return WaveStarted;
+	}
+	
+	public void setWaveStarted(bool over)
+	{
+		WaveStarted = over;
 	}
 }
 

@@ -35,29 +35,34 @@ public class WaveManager : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		if (numberOfEnemies > 0 && !ennemiesInvoked) 
+		if(Map.Instance.isStarted())
 		{
-			Invoke ("addEnnemies", timeBetweenEnnemies);
-			ennemiesInvoked = true;
-		} 
-		if (!waveStarted && !waveInvoked) 
-		{
-			Invoke ("startNextWave", timeBetweenWaves);
-			waveInvoked = true;
-		}
+			if (numberOfEnemies > 0 && !ennemiesInvoked) 
+			{
+				Invoke ("addEnnemies", timeBetweenEnnemies);
+				ennemiesInvoked = true;
+			} 
+			if (!waveStarted && !waveInvoked) 
+			{
+				Invoke ("startNextWave", timeBetweenWaves);
+				waveInvoked = true;
+			}
 
-		GameObject[] ennemies = GameObject.FindGameObjectsWithTag("Enemy");
-		if(ennemies.Length <= 0 && numberOfEnemies <= 0)
-		{
-			waveStarted = false;
+			GameObject[] ennemies = GameObject.FindGameObjectsWithTag("Enemy");
+			if(ennemies.Length <= 0 && numberOfEnemies <= 0)
+			{
+				endWave();
+			}
 		}
 	}
+
 	public void startNextWave()
 	{
 		level++;	
 		numberOfEnemies = level*2;
 		waveStarted = true;
 		waveInvoked = false;
+		Map.Instance.setWaveStarted(true);
 	}
 
 	public Path getEnemyPath(string startNode)
@@ -82,6 +87,17 @@ public class WaveManager : MonoBehaviour
 			}
 		}
 		ennemiesInvoked = false;
+	}
+
+	public void endWave()
+	{
+		waveStarted = false;
+		GameObject[] projectiles = GameObject.FindGameObjectsWithTag("TowerProjectile");
+		foreach(GameObject projectile in projectiles)
+		{
+			Destroy(projectile);
+		}
+		Map.Instance.setWaveStarted(false);
 	}
 }
 
