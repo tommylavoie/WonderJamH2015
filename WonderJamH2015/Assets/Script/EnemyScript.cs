@@ -3,7 +3,6 @@ using System.Collections;
 
 public class EnemyScript : MonoBehaviour {
     public float radius = 0.5f;
-    
 
 	// Use this for initialization
 	void Start () {
@@ -15,5 +14,8 @@ public class EnemyScript : MonoBehaviour {
 	
 	}
 
-    
+    void OnTriggerEnter()
+    {
+
+    }
 }
