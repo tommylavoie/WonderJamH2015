@@ -15,6 +15,7 @@ public class Map
 {
 	private List<PathNode> nodes;
 	private System.Random random;
+	private bool Started = false;
 	private bool GameOver = false;
 
 
@@ -98,6 +99,16 @@ public class Map
 	{
 		int rand = random.Next(0, max);
 		return rand;
+	}
+
+	public bool isStarted()
+	{
+		return Started;
+	}
+	
+	public void setStarted(bool over)
+	{
+		Started = over;
 	}
 
 	public bool isGameOver()

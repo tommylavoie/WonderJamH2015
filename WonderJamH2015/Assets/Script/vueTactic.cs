@@ -83,6 +83,7 @@ public class vueTactic : MonoBehaviour {
 				this.gameObject.transform.rotation = Quaternion.AngleAxis(22, Vector3.right);
 				this.gameObject.transform.position = pos;
 				started = true;
+				Map.Instance.setStarted(true);
 			}
 		}
 	}

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Unicorn : MonoBehaviour 
 {
-	public int lives = 30;
+	public int lives = 3;
 	// Use this for initialization
 	void Start () 
 	{
@@ -23,7 +23,8 @@ public class Unicorn : MonoBehaviour
 	{
 		if(collider.gameObject.tag.Equals("Enemy"))
 		{
-			lives--;
+			if(lives > 0)
+				lives--;
 		}
 	}
 

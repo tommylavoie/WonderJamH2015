@@ -14,8 +14,10 @@ public class EnemyScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		transform.position = Vector3.MoveTowards (transform.position, node.gameObject.transform.position, 10 * Time.deltaTime);
+	void Update () 
+	{
+		if(!map.isGameOver())
+			transform.position = Vector3.MoveTowards (transform.position, node.gameObject.transform.position, 10 * Time.deltaTime);
 	}
 
 	public void setPath(Path path){
