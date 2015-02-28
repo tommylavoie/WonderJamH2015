@@ -56,6 +56,7 @@ public class WaveManager : MonoBehaviour
 				GameObject enemyObject = (GameObject)Instantiate(enemyPrefab);
 				EnemyScript enemy = enemyObject.GetComponent<EnemyScript>();
 				enemy.setPath(enemyPath);
+				numberOfEnemies--;
 			}
 		}
 	}
