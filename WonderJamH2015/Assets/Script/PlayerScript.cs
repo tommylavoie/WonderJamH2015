@@ -39,7 +39,6 @@ public class PlayerScript : MonoBehaviour
         frames++;
 
         if (Map.Instance.isStarted() && Input.GetKeyDown(KeyCode.Space)){
-            lancerTours();
         }
 
     }
@@ -61,8 +60,6 @@ public class PlayerScript : MonoBehaviour
             rotation--;
         }
     }
-
-    void lancerTours() { }
 
 	void OnGUI()
 	{

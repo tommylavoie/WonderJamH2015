@@ -52,6 +52,12 @@ public class TowerScript : MonoBehaviour {
         }
     }
 
+    void OnMouseDown() {
+        if (AttackMode) { AttackMode = false; }
+        else { AttackMode = true; }
+        Debug.Log("AttackMode Changed =D");
+    }
+
     // Appeler à chaque x frames, trouve l'ennemie le plus proche de la tour avant d'attaquer
     void FindNearestEnemy()
     {
@@ -120,6 +126,7 @@ public class TowerScript : MonoBehaviour {
         }
     }
 
+    // Fonction qui lance le projectile jusqu'au target
     IEnumerator ThrowProjectile(Transform target, Transform projectile, Transform tower)
     {
         // Short delay added before Projectile is thrown
@@ -154,5 +161,7 @@ public class TowerScript : MonoBehaviour {
 
             yield return null;
         }
+
+        projectile.gameObject.rigidbody.useGravity = true;
     }
 }
