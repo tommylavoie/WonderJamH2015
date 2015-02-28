@@ -6,6 +6,7 @@ public class ForceUI : MonoBehaviour
 	public GameObject bar;
 	public GameObject cursor;
 	public int speed = 4;
+	public GameObject joueur;
 	ForceChooser chooser;
 	float cursorWidth;
 	bool cursorStopped;
@@ -51,6 +52,8 @@ public class ForceUI : MonoBehaviour
 			Debug.Log ("Tommy suce encore plus");
 			finalValue = chooser.stop();
 			cursorStopped = true;
+			tireTour script = joueur.GetComponent<tireTour>();
+			script.Invoke("tireCaliss", 1);
 		}
 		if(active && !cursorStopped)
 		{
