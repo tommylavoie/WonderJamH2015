@@ -56,12 +56,12 @@ public class Map
 	{
 		Path path = new Path();
 		PathNode actualNode = startNode;
+		List<PathNode> nodesInPath = nodesInPath = new List<PathNode>();
 
 		while(actualNode != endNode)
 		{
 			PathEdge edge = null;
 			List<PathEdge> edges = actualNode.getEdges();
-			List<PathNode> nodesInPath = new List<PathNode>();
 			int edgesCount = edges.Count;
 			bool found = false;
 			while(!found)
