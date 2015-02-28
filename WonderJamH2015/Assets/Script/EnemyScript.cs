@@ -21,7 +21,7 @@ public class EnemyScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.gameObject.transform.Translate(Vector3.forward * (Time.deltaTime * 10));
+		this.gameObject.transform.Translate(Vector3.forward * (Time.deltaTime * 2));
 	}
 
 	void OnTriggerEnter(Collider collision) {
