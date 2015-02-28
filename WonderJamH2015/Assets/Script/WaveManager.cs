@@ -7,7 +7,7 @@
 //     le code est régénéré.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System;
+using System.Collections;
 using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
@@ -16,26 +16,40 @@ public class WaveManager : MonoBehaviour
 	int level;
 	int numberOfEnemies;
 	bool waveStarted;
+	bool invoked;
 	
 	void Start()
 	{
 		map = Map.Instance;
 		level = 0;
-		numberOfEnemies = 0;
+		numberOfEnemies = -1;
 		waveStarted = false;
+		invoked = false;
 	}
 
 	void FixedUpdate()
 	{
-		if(numberOfEnemies > 0)
-			Invoke ("addEnnemies", 3);
-	}
+		GameObject[] ennemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-	public void startNextWave()
+		Debug.Log (ennemies.Length);
+
+		if (ennemies.Length == 0 && waveStarted) {
+			waveStarted = false;
+			invoked = false;
+		}
+		if (numberOfEnemies > 0 && !invoked) {
+			Invoke ("addEnnemies", 3);
+			invoked = true;
+		} else if (!waveStarted) {
+			waveStarted = true;
+			StartCoroutine(startNextWave());
+		}
+	}
+	public IEnumerator startNextWave()
 	{
-		level++;
+		yield return new WaitForSeconds (2);
+		level++;	
 		numberOfEnemies = level*2;
-		waveStarted = true;
 	}
 
 	public Path getEnemyPath(string startNode)
@@ -46,7 +60,7 @@ public class WaveManager : MonoBehaviour
 
 	public void addEnnemies()
 	{
-		string[] startNode = new string[] {"A1", "B1", "C1"};
+		string[] startNode = new string[] {"A1", "A2", "A3"};
 		for(int i=0;i<3;i++)
 		{
 			if(numberOfEnemies > 0)
@@ -56,6 +70,7 @@ public class WaveManager : MonoBehaviour
 				GameObject enemyObject = (GameObject)Instantiate(enemyPrefab);
 				EnemyScript enemy = enemyObject.GetComponent<EnemyScript>();
 				enemy.setPath(enemyPath);
+				numberOfEnemies--;
 			}
 		}
 	}
