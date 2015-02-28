@@ -16,13 +16,14 @@ public class tireTour : MonoBehaviour {
 
 	}
 
-	void tireCaliss(){
+	public void tireProjectile(int force){
+		Debug.Log (force);
 		tour.transform.localPosition = this.gameObject.transform.localPosition;
 		tour.transform.localRotation = this.gameObject.transform.localRotation;
 		Vector3 pos = tour.transform.position;
 		pos.y += 10f;
 		projectile = (GameObject)Instantiate(tour);
-		projectile.rigidbody.AddRelativeForce (Vector3.up * forceHaut, ForceMode.Impulse);
-		projectile.rigidbody.AddRelativeForce (Vector3.forward * forceDevant, ForceMode.Impulse);	
+		projectile.rigidbody.AddRelativeForce (Vector3.up * (forceHaut	+(force/4)), ForceMode.Impulse);
+		projectile.rigidbody.AddRelativeForce (Vector3.forward * (forceDevant+(force/2)), ForceMode.Impulse);	
 	}
 }
