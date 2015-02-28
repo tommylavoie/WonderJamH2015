@@ -63,9 +63,4 @@ public class PlayerScript : MonoBehaviour
     }
 
     void lancerTours() { }
-
-	void OnGUI()
-	{
-		GUI.Label(new Rect(10, 30, 100, 20), ""+Input.GetAxis("Horizontal"));
-	}
 }

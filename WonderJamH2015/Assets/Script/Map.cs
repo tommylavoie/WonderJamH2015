@@ -17,6 +17,7 @@ public class Map
 	private System.Random random;
 	private bool Started = false;
 	private bool GameOver = false;
+	private bool WaveStarted = false;
 
 
 	private static Map instance;
@@ -119,6 +120,16 @@ public class Map
 	public void setGameOver(bool over)
 	{
 		GameOver = over;
+	}
+
+	public bool isWaveStarted()
+	{
+		return WaveStarted;
+	}
+	
+	public void setWaveStarted(bool over)
+	{
+		WaveStarted = over;
 	}
 }
 
