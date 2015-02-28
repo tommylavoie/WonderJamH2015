@@ -13,7 +13,7 @@ using UnityEngine;
 
 public class PathNode
 {
-	GameObject gameObject;
+	public GameObject gameObject;
 	public string name;
 	List<PathEdge> edgesTo;
 	

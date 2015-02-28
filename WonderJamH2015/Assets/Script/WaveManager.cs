@@ -12,18 +12,23 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
 	public GameObject enemyPrefab;
-	public Board board;
 	public Map map;
 	int level;
 	int numberOfEnemies;
 	bool waveStarted;
 	
-	public WaveManager ()
+	void Start()
 	{
 		map = Map.Instance;
 		level = 0;
 		numberOfEnemies = 0;
 		waveStarted = false;
+	}
+
+	void FixedUpdate()
+	{
+		if(numberOfEnemies > 0)
+			Invoke ("addEnnemies", 3);
 	}
 
 	public void startNextWave()
@@ -33,9 +38,26 @@ public class WaveManager : MonoBehaviour
 		waveStarted = true;
 	}
 
-	/*public Path getEnemyPath()
+	public Path getEnemyPath(string startNode)
 	{
+		Path path = map.createPath(map.getNodeByName(startNode), map.getNodeByName("F1"));
+		return path;
+	}
 
-	}*/
+	public void addEnnemies()
+	{
+		string[] startNode = new string[] {"A1", "B1", "C1"};
+		for(int i=0;i<3;i++)
+		{
+			if(numberOfEnemies > 0)
+			{
+				Path enemyPath = getEnemyPath(startNode[i]);
+				enemyPrefab.transform.position = map.getNodeByName(startNode[i]).gameObject.transform.position;
+				GameObject enemyObject = (GameObject)Instantiate(enemyPrefab);
+				EnemyScript enemy = enemyObject.GetComponent<EnemyScript>();
+				enemy.setPath(enemyPath);
+			}
+		}
+	}
 }
 
