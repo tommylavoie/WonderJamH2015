@@ -42,6 +42,12 @@ public class PlayerScript : MonoBehaviour
             lancerTours();
         }
 
+		if(Map.Instance.isGameOver() && Input.GetAxis("Fire1") > 0)
+		{
+			Map.restartInstance();
+			Application.LoadLevel("MainMenu");
+		}
+
     }
 
     // Fonction de rotation vers la droite

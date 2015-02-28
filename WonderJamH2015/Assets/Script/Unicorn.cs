@@ -7,7 +7,7 @@ public class Unicorn : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		
+		lives = 3;
 	}
 	
 	// Update is called once per frame

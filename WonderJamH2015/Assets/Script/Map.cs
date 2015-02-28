@@ -39,6 +39,11 @@ public class Map
 			return instance;
 		}
 	}
+
+	public static void restartInstance()
+	{
+		instance = new Map();
+	}
 	
 	public void addNode(PathNode node)
 	{
