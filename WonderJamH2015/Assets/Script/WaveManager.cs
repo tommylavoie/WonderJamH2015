@@ -8,13 +8,33 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System;
-namespace AssemblyCSharp
+using UnityEngine;
+public class WaveManager : MonoBehaviour
 {
-	public class WaveManager
+	public GameObject enemyPrefab;
+	public Board board;
+	public Map map;
+	int level;
+	int numberOfEnemies;
+	bool waveStarted;
+	
+	public WaveManager ()
 	{
-		public WaveManager ()
-		{
-		}
+		level = 0;
+		numberOfEnemies = 0;
+		waveStarted = false;
 	}
+
+	public void startNextWave()
+	{
+		level++;
+		numberOfEnemies = level*2;
+		waveStarted = true;
+	}
+
+	/*public Path getEnemyPath()
+	{
+
+	}*/
 }
 
