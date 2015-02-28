@@ -4,45 +4,68 @@ using System.Collections.Generic;
 public class Board : MonoBehaviour 
 {
 	Map map;
+	public GameObject A1;
+	public GameObject A2;
+	public GameObject A3;
+	public GameObject B1;
+	public GameObject B2;
+	public GameObject B3;
+	public GameObject B4;
+	public GameObject B5;
+	public GameObject C1;
+	public GameObject C2;
+	public GameObject C3;
+	public GameObject C4;
+	public GameObject C5;
+	public GameObject D1;
+	public GameObject D2;
+	public GameObject D3;
+	public GameObject D4;
+	public GameObject D5;
+	public GameObject E1;
+	public GameObject E2;
+	public GameObject E3;
+	public GameObject E4;
+	public GameObject E5;
+	public GameObject F1;
 	// Use this for initialization
 	void Start () 
 	{
 		map = Map.Instance;
 		createMap();
-		Path path = map.createPath(map.getNodeByName("a1"), map.getNodeByName("f1"));
 	}
 
 	void createMap()
 	{
-		PathNode a1 = new PathNode("a1");
-		PathNode a2 = new PathNode("a2");
-		PathNode a3 = new PathNode("a3");
-
-		PathNode b1 = new PathNode("b1");
-		PathNode b2 = new PathNode("b2");
-		PathNode b3 = new PathNode("b3");
-		PathNode b4 = new PathNode("b4");
-		PathNode b5 = new PathNode("b5");
-
-		PathNode c1 = new PathNode("c1");
-		PathNode c2 = new PathNode("c2");
-		PathNode c3 = new PathNode("c3");
-		PathNode c4 = new PathNode("c4");
-		PathNode c5 = new PathNode("c5");
-
-		PathNode d1 = new PathNode("d1");
-		PathNode d2 = new PathNode("d2");
-		PathNode d3 = new PathNode("d3");
-		PathNode d4 = new PathNode("d4");
-		PathNode d5 = new PathNode("d5");
-
-		PathNode e1 = new PathNode("e1");
-		PathNode e2 = new PathNode("e2");
-		PathNode e3 = new PathNode("e3");
-		PathNode e4 = new PathNode("e4");
-		PathNode e5 = new PathNode("e5");
-
-		PathNode f1 = new PathNode("f1");
+		PathNode a1 = new PathNode("A1", A1);
+		PathNode a2 = new PathNode("A2", A2);
+		PathNode a3 = new PathNode("A3", A3);
+		
+		PathNode b1 = new PathNode("B1", B1);
+		PathNode b2 = new PathNode("B2", B2);
+		PathNode b3 = new PathNode("B3", B3);
+		PathNode b4 = new PathNode("B4", B4);
+		PathNode b5 = new PathNode("B5", B5);
+		
+		PathNode c1 = new PathNode("C1", C1);
+		PathNode c2 = new PathNode("C2", C2);
+		PathNode c3 = new PathNode("C3", C3);
+		PathNode c4 = new PathNode("C4", C4);
+		PathNode c5 = new PathNode("C5", C5);
+		
+		PathNode d1 = new PathNode("D1", D1);
+		PathNode d2 = new PathNode("D2", D2);
+		PathNode d3 = new PathNode("D3", D3);
+		PathNode d4 = new PathNode("D4", D4);
+		PathNode d5 = new PathNode("D5", D5);
+		
+		PathNode e1 = new PathNode("E1", E1);
+		PathNode e2 = new PathNode("E2", E2);
+		PathNode e3 = new PathNode("E3", E3);
+		PathNode e4 = new PathNode("E4", E4);
+		PathNode e5 = new PathNode("E5", E5);
+		
+		PathNode f1 = new PathNode("F1", F1);
 
 		a1.addEdge(b2);
 		a2.addEdge(b3);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class EnemyScript : MonoBehaviour {
     public float radius = 0.5f;
+	Transform target;
 	Map map;
 	Path path;
 	PathNode node;
@@ -10,18 +11,16 @@ public class EnemyScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		map = Map.Instance;
-		createMap();
-		path = map.createPath(map.getNodeByName("A1"), map.getNodeByName("F1"));
-
-		//Savoir le prochain noeud qu'y doit aller
-		node = path.getNextEdge().getNodeTo();
-		//Savoir son nom
-		Debug.Log(node.name);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		this.gameObject.transform.Translate(Vector3.forward * (Time.deltaTime * 2));
+		transform.position = Vector3.MoveTowards (transform.position, node.gameObject.transform.position, 10 * Time.deltaTime);
+	}
+
+	public void setPath(Path path){
+		this.path = path;
+		node = path.getNextEdge().getNodeTo();
 	}
 
 	void OnTriggerEnter(Collider collision) {
@@ -31,141 +30,8 @@ public class EnemyScript : MonoBehaviour {
 		if (collision.tag != "Noeud") {
 			return;
 		}
-			if(collision.gameObject.name == node.name) {
-				node = path.getNextEdge().getNodeTo();
-				if((collision.gameObject.name[0] == node.name[0]) && (collision.gameObject.name[1] < node.name[1])){
-					this.gameObject.transform.rotation = Quaternion.AngleAxis(270, Vector3.up);
-				}
-				else if((collision.gameObject.name[0] == node.name[0]) && (collision.gameObject.name[1] > node.name[1])){
-					this.gameObject.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
-				}
-				else{
-					this.gameObject.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
-				}
-			}
-			else if(collision.gameObject.name[1] < node.name[1]){
-				this.gameObject.transform.rotation = Quaternion.AngleAxis(270, Vector3.up);
-			}
-			else if(collision.gameObject.name[1] > node.name[1]){
-				this.gameObject.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
-			}
-	}
-
-	void createMap()
-	{
-		PathNode a1 = new PathNode("A1");
-		PathNode a2 = new PathNode("A2");
-		PathNode a3 = new PathNode("A3");
-		
-		PathNode b1 = new PathNode("B1");
-		PathNode b2 = new PathNode("B2");
-		PathNode b3 = new PathNode("B3");
-		PathNode b4 = new PathNode("B4");
-		PathNode b5 = new PathNode("B5");
-		
-		PathNode c1 = new PathNode("C1");
-		PathNode c2 = new PathNode("C2");
-		PathNode c3 = new PathNode("C3");
-		PathNode c4 = new PathNode("C4");
-		PathNode c5 = new PathNode("C5");
-		
-		PathNode d1 = new PathNode("D1");
-		PathNode d2 = new PathNode("D2");
-		PathNode d3 = new PathNode("D3");
-		PathNode d4 = new PathNode("D4");
-		PathNode d5 = new PathNode("D5");
-		
-		PathNode e1 = new PathNode("E1");
-		PathNode e2 = new PathNode("E2");
-		PathNode e3 = new PathNode("E3");
-		PathNode e4 = new PathNode("E4");
-		PathNode e5 = new PathNode("E5");
-		
-		PathNode f1 = new PathNode("F1");
-		
-		a1.addEdge(b2);
-		a2.addEdge(b3);
-		a3.addEdge(b4);
-		
-		b1.addEdge(c1);
-		b1.addEdge(b2);
-		b2.addEdge(b1);
-		b2.addEdge(b3);
-		b2.addEdge(c2);
-		b3.addEdge(b2);
-		b3.addEdge(b4);
-		b3.addEdge(c3);
-		b4.addEdge(b3);
-		b4.addEdge(b5);
-		b4.addEdge(c4);
-		b5.addEdge(b4);
-		b5.addEdge(c5);
-		
-		c1.addEdge(d1);
-		c1.addEdge(c2);
-		c2.addEdge(c1);
-		c2.addEdge(c3);
-		c2.addEdge(d2);
-		c3.addEdge(c2);
-		c3.addEdge(c4);
-		c3.addEdge(d3);
-		c4.addEdge(c3);
-		c4.addEdge(c5);
-		c4.addEdge(d4);
-		c5.addEdge(c4);
-		c5.addEdge(d5);
-		
-		d1.addEdge(e1);
-		d1.addEdge(d2);
-		d2.addEdge(d1);
-		d2.addEdge(d3);
-		d2.addEdge(e2);
-		d3.addEdge(d2);
-		d3.addEdge(d4);
-		d3.addEdge(e3);
-		d4.addEdge(d3);
-		d4.addEdge(d5);
-		d4.addEdge(e4);
-		d5.addEdge(d4);
-		d5.addEdge(e5);
-		
-		e1.addEdge(f1);
-		e1.addEdge(e2);
-		e2.addEdge(e1);
-		e2.addEdge(e3);
-		e2.addEdge(f1);
-		e3.addEdge(e2);
-		e3.addEdge(e4);
-		e3.addEdge(f1);
-		e4.addEdge(e3);
-		e4.addEdge(e5);
-		e4.addEdge(f1);
-		e5.addEdge(e4);
-		e5.addEdge(f1);
-		
-		map.addNode(a1);
-		map.addNode(a2);
-		map.addNode(a3);
-		map.addNode(b1);
-		map.addNode(b2);
-		map.addNode(b3);
-		map.addNode(b4);
-		map.addNode(b5);
-		map.addNode(c1);
-		map.addNode(c2);
-		map.addNode(c3);
-		map.addNode(c4);
-		map.addNode(c5);
-		map.addNode(d1);
-		map.addNode(d2);
-		map.addNode(d3);
-		map.addNode(d4);
-		map.addNode(d5);
-		map.addNode(e1);
-		map.addNode(e2);
-		map.addNode(e3);
-		map.addNode(e4);
-		map.addNode(e5);
-		map.addNode(f1);
+		if (collision.gameObject.name == node.name) {
+			node = path.getNextEdge().getNodeTo();
+		}
 	}
 }
