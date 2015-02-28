@@ -13,15 +13,15 @@ public class vueTactic : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.V)) {
 			pos.x = 0f;
-			pos.y = 30.24f;
-			pos.z = 24.93f;
+			pos.y = 50.3f;
+			pos.z = 14.4f;
 			this.gameObject.transform.rotation = Quaternion.AngleAxis(90, Vector3.right);
 			this.gameObject.transform.position = pos;
 		}
 		if (Input.GetKeyUp (KeyCode.V)) {
 			pos.x = 0f;
 			pos.y = 13.49f;
-			pos.z = -22.65f;
+			pos.z = -28.65f;
 			this.gameObject.transform.rotation = Quaternion.AngleAxis(22, Vector3.right);
 			this.gameObject.transform.position = pos;	
 
