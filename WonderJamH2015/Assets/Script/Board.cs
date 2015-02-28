@@ -11,8 +11,6 @@ public class Board : MonoBehaviour
 		map = new Map();
 		createMap();
 		Path path = map.createPath(map.getNodeByName("a1"), map.getNodeByName("f1"));
-		Debug.Log(path.getString());
-
 		chooser = new ForceChooser();
 	}
 
@@ -138,6 +136,6 @@ public class Board : MonoBehaviour
 	void Update () 
 	{
 		chooser.update();
-		Debug.Log (chooser.getValue());
+		//Debug.Log (chooser.getValue());
 	}
 }
