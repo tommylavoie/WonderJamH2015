@@ -5,8 +5,10 @@ using System.Collections.Generic;
 public class TowerScript : MonoBehaviour {
 
     public float attackEachXFrames = 300;
-    public Transform projectilePrefab;
     public float projectileCooldown = 300;
+    public Transform projectilePrefab;
+    public float firingAngle = 45.0f;
+    public float gravity = 9.8f;
     private List<Collider> listEnemyInRange;
     private Collider nearestEnemy;
     private float nearestEnemyDistance;
@@ -35,7 +37,6 @@ public class TowerScript : MonoBehaviour {
 
     // Appeler lorsqu'un enemy rentre dans le radius de la tour
     void OnTriggerEnter(Collider otherCollider) {
-		Debug.Log ("J'suis la");
 		EnemyScript enemyScript = otherCollider.gameObject.GetComponent<EnemyScript>();
         if (enemyScript != null)
         {
@@ -44,7 +45,6 @@ public class TowerScript : MonoBehaviour {
     }
      // Appeler lorsqu'un enemy sort du radius de la tour
     void OnTriggerExit(Collider otherCollider) {
-		Debug.Log ("J'suis pu la");
 		EnemyScript enemyScript = otherCollider.gameObject.GetComponent<EnemyScript>();
         if (enemyScript != null)
         {
@@ -61,7 +61,7 @@ public class TowerScript : MonoBehaviour {
         foreach (Collider c in listEnemyInRange)
         {
             float distance = Vector3.Distance(c.gameObject.transform.position, gameObject.transform.position);
-            Debug.Log(distance);
+            //Debug.Log(distance);
             if (nearestEnemy == null)
             {
                 nearestEnemy = c;
@@ -82,13 +82,42 @@ public class TowerScript : MonoBehaviour {
         {
             if (currentProjectileCD >= projectileCooldown)
             {
-                Debug.Log("Attack");
                 // Add attack animation
                 Transform leProjectile;
-                leProjectile = Instantiate(projectilePrefab, transform.position, transform.rotation) as Transform;
-                leProjectile.GetComponent<TowerProjectile>().target = nearestEnemy.gameObject;
+                leProjectile = Instantiate(projectilePrefab, transform.position + new Vector3(0, 9f, 0), transform.rotation) as Transform;
+                //leProjectile.GetComponent<TowerProjectile>().target = nearestEnemy.gameObject;
+
+                // Move projectile to the position of throwing object + add some offset if needed.
+                //leProjectile.position = transform.position + new Vector3(0, 9f, 0);
+                
+                // Calculate distance to target
+                float target_Distance = Vector3.Distance(leProjectile.position, nearestEnemy.gameObject.transform.position);
+
+                // Calculate the velocity needed to throw the object to the target at specified angle.
+                float projectile_Velocity = target_Distance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravity);
+                
+                // Extract the X  Y componenent of the velocity
+                float Vx = Mathf.Sqrt(projectile_Velocity) * Mathf.Cos(firingAngle * Mathf.Deg2Rad);
+                float Vy = Mathf.Sqrt(projectile_Velocity) * Mathf.Sin(firingAngle * Mathf.Deg2Rad);
+
+                // Calculate flight time.
+                float flightDuration = target_Distance / Vx;
+
+                // Rotate projectile to face the target.
+                leProjectile.rotation = Quaternion.LookRotation(nearestEnemy.gameObject.transform.position - leProjectile.position);
+
+                float elapse_time = 0;
+                Debug.Log(flightDuration);
+                while (elapse_time < flightDuration)
+                {
+                    leProjectile.Translate(0, (Vy - (gravity * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
+
+                    elapse_time += Time.deltaTime;
+                }
+                
                 currentProjectileCD = 0;
             } 
+
         }
         
     }

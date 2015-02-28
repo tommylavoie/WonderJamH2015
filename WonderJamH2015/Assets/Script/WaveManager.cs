@@ -13,10 +13,13 @@ public class WaveManager : MonoBehaviour
 {
 	public GameObject enemyPrefab;
 	public Map map;
+	public int timeBetweenWaves;
+	public int timeBetweenEnnemies;
 	int level;
 	int numberOfEnemies;
 	bool waveStarted;
-	bool invoked;
+	bool waveInvoked;
+	bool ennemiesInvoked;
 	
 	void Start()
 	{
@@ -24,32 +27,37 @@ public class WaveManager : MonoBehaviour
 		level = 0;
 		numberOfEnemies = -1;
 		waveStarted = false;
-		invoked = false;
+		ennemiesInvoked = false;
+		waveInvoked = false;
+		timeBetweenWaves = 5;
+		timeBetweenEnnemies = 3;
 	}
 
 	void FixedUpdate()
 	{
-		GameObject[] ennemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-		Debug.Log (ennemies.Length);
-
-		if (ennemies.Length == 0 && waveStarted) {
-			waveStarted = false;
-			invoked = false;
+		if (numberOfEnemies > 0 && !ennemiesInvoked) 
+		{
+			Invoke ("addEnnemies", timeBetweenEnnemies);
+			ennemiesInvoked = true;
+		} 
+		if (!waveStarted && !waveInvoked) 
+		{
+			Invoke ("startNextWave", timeBetweenWaves);
+			waveInvoked = true;
 		}
-		if (numberOfEnemies > 0 && !invoked) {
-			Invoke ("addEnnemies", 3);
-			invoked = true;
-		} else if (!waveStarted) {
-			waveStarted = true;
-			StartCoroutine(startNextWave());
+
+		GameObject[] ennemies = GameObject.FindGameObjectsWithTag("Enemy");
+		if(ennemies.Length <= 0 && numberOfEnemies <= 0)
+		{
+			waveStarted = false;
 		}
 	}
-	public IEnumerator startNextWave()
+	public void startNextWave()
 	{
-		yield return new WaitForSeconds (2);
 		level++;	
 		numberOfEnemies = level*2;
+		waveStarted = true;
+		waveInvoked = false;
 	}
 
 	public Path getEnemyPath(string startNode)
@@ -73,6 +81,7 @@ public class WaveManager : MonoBehaviour
 				numberOfEnemies--;
 			}
 		}
+		ennemiesInvoked = false;
 	}
 }
 
