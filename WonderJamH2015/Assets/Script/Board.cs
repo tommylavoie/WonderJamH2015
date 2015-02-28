@@ -33,7 +33,6 @@ public class Board : MonoBehaviour
 	{
 		map = Map.Instance;
 		createMap();
-		Path path = map.createPath(map.getNodeByName("a1"), map.getNodeByName("f1"));
 	}
 
 	void createMap()
