@@ -27,25 +27,27 @@ public class EnemyScript : MonoBehaviour {
 		if(collision.gameObject.name.Equals("F1")){
 			Destroy (this.gameObject);
 		}
-
-		if(collision.gameObject.name == node.name) {
-			node = path.getNextEdge().getNodeTo();
-			if((collision.gameObject.name[0] == node.name[0]) && (collision.gameObject.name[1] < node.name[1])){
+		if (collision.tag != "Noeud") {
+			return;
+		}
+			if(collision.gameObject.name == node.name) {
+				node = path.getNextEdge().getNodeTo();
+				if((collision.gameObject.name[0] == node.name[0]) && (collision.gameObject.name[1] < node.name[1])){
+					this.gameObject.transform.rotation = Quaternion.AngleAxis(270, Vector3.up);
+				}
+				else if((collision.gameObject.name[0] == node.name[0]) && (collision.gameObject.name[1] > node.name[1])){
+					this.gameObject.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
+				}
+				else{
+					this.gameObject.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
+				}
+			}
+			else if(collision.gameObject.name[1] < node.name[1]){
 				this.gameObject.transform.rotation = Quaternion.AngleAxis(270, Vector3.up);
 			}
-			else if((collision.gameObject.name[0] == node.name[0]) && (collision.gameObject.name[1] > node.name[1])){
+			else if(collision.gameObject.name[1] > node.name[1]){
 				this.gameObject.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
 			}
-			else{
-				this.gameObject.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
-			}
-		}
-		else if(collision.gameObject.name[1] < node.name[1]){
-			this.gameObject.transform.rotation = Quaternion.AngleAxis(270, Vector3.up);
-		}
-		else if(collision.gameObject.name[1] > node.name[1]){
-			this.gameObject.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
-		}
 	}
 
 	void createMap()

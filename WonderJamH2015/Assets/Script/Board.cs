@@ -139,5 +139,6 @@ public class Board : MonoBehaviour
 	void Update () 
 	{
 		//Debug.Log (chooser.getValue());
+		
 	}
 }

@@ -4,11 +4,14 @@ using System.Collections.Generic;
 
 public class TowerScript : MonoBehaviour {
 
-    public float attackEachXFrames = 50;
+    public float attackEachXFrames = 300;
+    public Transform projectilePrefab;
+    public float projectileCooldown = 300;
     private List<Collider> listEnemyInRange;
     private Collider nearestEnemy;
     private float nearestEnemyDistance;
-    float attackFrameCount;
+    private float attackFrameCount;
+    private float currentProjectileCD;
     
 
 	// Use this for initialization
@@ -18,14 +21,15 @@ public class TowerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-
         if (attackFrameCount == attackEachXFrames)
         {
             FindNearestEnemy();
             AttackNearestEnemy();
+            attackFrameCount = 0;
         }
 
         attackFrameCount++;
+        currentProjectileCD++;
 
 	}
 
@@ -57,7 +61,7 @@ public class TowerScript : MonoBehaviour {
         foreach (Collider c in listEnemyInRange)
         {
             float distance = Vector3.Distance(c.gameObject.transform.position, gameObject.transform.position);
-
+            Debug.Log(distance);
             if (nearestEnemy == null)
             {
                 nearestEnemy = c;
@@ -74,9 +78,18 @@ public class TowerScript : MonoBehaviour {
     // Appeler à chaque x frames, attaque l'ennemie le plus proche de la tour
     void AttackNearestEnemy()
     {
-        // Add attack animation
-
-        //nearestEnemy.gameObject.GetComponent<EnemyScript>().kill();
-
+        if (nearestEnemy != null)
+        {
+            if (currentProjectileCD >= projectileCooldown)
+            {
+                Debug.Log("Attack");
+                // Add attack animation
+                Transform leProjectile;
+                leProjectile = Instantiate(projectilePrefab, transform.position, transform.rotation) as Transform;
+                leProjectile.GetComponent<TowerProjectile>().target = nearestEnemy.gameObject;
+                currentProjectileCD = 0;
+            } 
+        }
+        
     }
 }
