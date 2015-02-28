@@ -31,7 +31,8 @@ public class TowerScript : MonoBehaviour {
 
     // Appeler lorsqu'un enemy rentre dans le radius de la tour
     void OnTriggerEnter(Collider otherCollider) {
-        EnemyScript enemyScript = otherCollider.gameObject.GetComponent<EnemyScript>();
+		Debug.Log ("J'suis la");
+		EnemyScript enemyScript = otherCollider.gameObject.GetComponent<EnemyScript>();
         if (enemyScript != null)
         {
             listEnemyInRange.Add(otherCollider);
@@ -39,7 +40,8 @@ public class TowerScript : MonoBehaviour {
     }
      // Appeler lorsqu'un enemy sort du radius de la tour
     void OnTriggerExit(Collider otherCollider) {
-        EnemyScript enemyScript = otherCollider.gameObject.GetComponent<EnemyScript>();
+		Debug.Log ("J'suis pu la");
+		EnemyScript enemyScript = otherCollider.gameObject.GetComponent<EnemyScript>();
         if (enemyScript != null)
         {
             listEnemyInRange.Remove(otherCollider);
