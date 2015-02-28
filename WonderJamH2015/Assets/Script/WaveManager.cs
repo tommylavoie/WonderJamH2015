@@ -51,16 +51,18 @@ public class WaveManager : MonoBehaviour
 			GameObject[] ennemies = GameObject.FindGameObjectsWithTag("Enemy");
 			if(ennemies.Length <= 0 && numberOfEnemies <= 0)
 			{
-				waveStarted = false;
+				endWave();
 			}
 		}
 	}
+
 	public void startNextWave()
 	{
 		level++;	
 		numberOfEnemies = level*2;
 		waveStarted = true;
 		waveInvoked = false;
+		Map.Instance.setWaveStarted(true);
 	}
 
 	public Path getEnemyPath(string startNode)
@@ -85,6 +87,24 @@ public class WaveManager : MonoBehaviour
 			}
 		}
 		ennemiesInvoked = false;
+	}
+
+	public void endWave()
+	{
+		waveStarted = false;
+		GameObject[] projectiles = GameObject.FindGameObjectsWithTag("TowerProjectile");
+		foreach(GameObject projectile in projectiles)
+		{
+			Destroy(projectile);
+		}
+
+		GameObject[] pprojectiles = GameObject.FindGameObjectsWithTag("PlayerProjectile");
+		foreach(GameObject pprojectile in pprojectiles)
+		{
+			Destroy(pprojectile);
+		}
+
+		Map.Instance.setWaveStarted(false);
 	}
 }
 

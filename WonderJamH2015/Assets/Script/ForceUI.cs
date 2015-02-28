@@ -59,13 +59,19 @@ public class ForceUI : MonoBehaviour
 		{
 			if(active && !cursorStopped && !pressed && Input.GetAxis("Jump") > 0)
 			{
-				Debug.Log ("Tommy suce encore plus");
 				finalValue = chooser.stop();
 				cursorStopped = true;
 				tireTour script = joueur.GetComponent<tireTour>();
-				script.tireProjectile(finalValue);
+				int time = 2;
+				if(Map.Instance.isWaveStarted())
+					script.tireItem(finalValue);
+				else
+				{
+					time = 5;
+					script.tireProjectile(finalValue);
+				}
 				delay = true;
-				Invoke("stopDelay", 5);
+				Invoke("stopDelay", time);
 			}
 			if(active && !cursorStopped)
 			{
@@ -77,7 +83,6 @@ public class ForceUI : MonoBehaviour
 			}
 			if(!active && Input.GetAxis("Jump") > 0){
 				go();
-				Debug.Log ("Tommy suce");
 				pressed = true;
 			}
 			if(Input.GetAxis("Jump") == 0)

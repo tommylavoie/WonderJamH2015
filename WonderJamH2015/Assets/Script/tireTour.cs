@@ -3,6 +3,7 @@ using System.Collections;
 
 public class tireTour : MonoBehaviour {
 	public GameObject tour;
+	public GameObject item;
 	GameObject projectile;
 	public int forceHaut;
 	public int forceDevant;
@@ -17,7 +18,6 @@ public class tireTour : MonoBehaviour {
 	}
 
 	public void tireProjectile(int force){
-		Debug.Log (force);
 		tour.transform.localPosition = this.gameObject.transform.localPosition;
 		tour.transform.localRotation = this.gameObject.transform.localRotation;
 		Vector3 pos = tour.transform.position;
@@ -25,5 +25,16 @@ public class tireTour : MonoBehaviour {
 		projectile = (GameObject)Instantiate(tour);
 		projectile.rigidbody.AddRelativeForce (Vector3.up * (forceHaut	+(force/4)), ForceMode.Impulse);
 		projectile.rigidbody.AddRelativeForce (Vector3.forward * (forceDevant+(force/4)), ForceMode.Impulse);	
+	}
+
+	public void tireItem(int force)
+	{
+		item.transform.localPosition = this.gameObject.transform.localPosition;
+		item.transform.localRotation = this.gameObject.transform.localRotation;
+		Vector3 pos = item.transform.position;
+		pos.y += 10f;
+		projectile = (GameObject)Instantiate(item);
+		projectile.rigidbody.AddRelativeForce (Vector3.up * (forceHaut	+(force/4)), ForceMode.Impulse);
+		projectile.rigidbody.AddRelativeForce (Vector3.forward * (forceDevant+(force/4)), ForceMode.Impulse);
 	}
 }

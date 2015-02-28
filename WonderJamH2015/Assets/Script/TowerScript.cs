@@ -134,33 +134,41 @@ public class TowerScript : MonoBehaviour {
         
         // Move projectile to the position of throwing object + add some offset if needed.
         //projectile.position = tower.GetChild(0).position + new Vector3(0, 7f, 0.0f);
+		if(projectile != null)
+		{
+	        // Calculate distance to target
+	        float target_Distance = Vector3.Distance(projectile.position, target.position + (target.forward * 2.5f));
 
-        // Calculate distance to target
-        float target_Distance = Vector3.Distance(projectile.position, target.position + (target.forward * 2.5f));
+	        // Calculate the velocity needed to throw the object to the target at specified angle.
+	        float projectile_Velocity = target_Distance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravity);
 
-        // Calculate the velocity needed to throw the object to the target at specified angle.
-        float projectile_Velocity = target_Distance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravity);
+	        // Extract the X  Y componenent of the velocity
+	        float Vx = Mathf.Sqrt(projectile_Velocity) * Mathf.Cos(firingAngle * Mathf.Deg2Rad);
+	        float Vy = Mathf.Sqrt(projectile_Velocity) * Mathf.Sin(firingAngle * Mathf.Deg2Rad);
 
-        // Extract the X  Y componenent of the velocity
-        float Vx = Mathf.Sqrt(projectile_Velocity) * Mathf.Cos(firingAngle * Mathf.Deg2Rad);
-        float Vy = Mathf.Sqrt(projectile_Velocity) * Mathf.Sin(firingAngle * Mathf.Deg2Rad);
+	        // Calculate flight time.
+	        float flightDuration = target_Distance / Vx;
 
-        // Calculate flight time.
-        float flightDuration = target_Distance / Vx;
+			if(projectile != null)
+			{
+		        // Rotate projectile to face the target.
+		        projectile.rotation = Quaternion.LookRotation(target.position - projectile.position);
 
-        // Rotate projectile to face the target.
-        projectile.rotation = Quaternion.LookRotation(target.position - projectile.position);
+		        float elapse_time = 0;
 
-        float elapse_time = 0;
+		        while (elapse_time < flightDuration)
+		        {
+					if(projectile != null)
+					{
+			            projectile.Translate(0, (Vy - (gravity * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
+					}
 
-        while (elapse_time < flightDuration)
-        {
-            projectile.Translate(0, (Vy - (gravity * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
+			        elapse_time += Time.deltaTime;
 
-            elapse_time += Time.deltaTime;
-
-            yield return null;
-        }
+			        yield return null;
+		        }
+			}
+		}
 
         projectile.gameObject.rigidbody.useGravity = true;
     }
