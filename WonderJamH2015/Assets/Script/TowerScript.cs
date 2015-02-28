@@ -9,9 +9,10 @@ public class TowerScript : MonoBehaviour {
     public Transform projectilePrefab;
     public float firingAngle = 45.0f;
     public float gravity = 9.8f;
+    public bool AttackMode = true; // true = nearest, false = most far
     private List<Collider> listEnemyInRange;
-    private Collider nearestEnemy;
-    private float nearestEnemyDistance;
+    private Collider targetEnemy;
+    private float targetEnemyDistance;
     private float attackFrameCount;
     private float currentProjectileCD;
     
@@ -25,8 +26,9 @@ public class TowerScript : MonoBehaviour {
 	void FixedUpdate () {
         if (attackFrameCount == attackEachXFrames)
         {
-            FindNearestEnemy();
-            AttackNearestEnemy();
+            if (AttackMode){ FindNearestEnemy(); }
+            else { FindMostFarEnemy(); }
+            AttackTargetEnemy();
             attackFrameCount = 0;
         }
 
@@ -53,59 +55,81 @@ public class TowerScript : MonoBehaviour {
     // Appeler à chaque x frames, trouve l'ennemie le plus proche de la tour avant d'attaquer
     void FindNearestEnemy()
     {
-        nearestEnemy = null;
-        nearestEnemyDistance = 0;
+        targetEnemy = null;
+        targetEnemyDistance = 0;
 
         foreach (Collider c in listEnemyInRange)
         {
             if (c != null)
             {
                 float distance = Vector3.Distance(c.gameObject.transform.position, gameObject.transform.position);
-                if (nearestEnemy == null)
+                if (targetEnemy == null)
                 {
-                    nearestEnemy = c;
-                    nearestEnemyDistance = distance;
+                    targetEnemy = c;
+                    targetEnemyDistance = distance;
                 }
-                else if (distance < nearestEnemyDistance)
+                else if (distance < targetEnemyDistance)
                 {
-                    nearestEnemy = c;
-                    nearestEnemyDistance = distance;
+                    targetEnemy = c;
+                    targetEnemyDistance = distance;
+                }
+            }
+        }
+    }
+
+    // Trouve l'enemie le plus loin dans le range de la tour avant d'attaquer
+    void FindMostFarEnemy()
+    {
+        targetEnemy = null;
+        targetEnemyDistance = 0;
+
+        foreach (Collider c in listEnemyInRange)
+        {
+            if (c != null)
+            {
+                float distance = Vector3.Distance(c.gameObject.transform.position, gameObject.transform.position);
+                if (targetEnemy == null)
+                {
+                    targetEnemy = c;
+                    targetEnemyDistance = distance;
+                }
+                else if (distance > targetEnemyDistance)
+                {
+                    targetEnemy = c;
+                    targetEnemyDistance = distance;
                 }
             }
         }
     }
     
     // Appeler à chaque x frames, attaque l'ennemie le plus proche de la tour
-    void AttackNearestEnemy()
+    void AttackTargetEnemy()
     {
-        if (nearestEnemy != null)
+        if (targetEnemy != null)
         {
             if (currentProjectileCD >= projectileCooldown)
             {
                 // Add attack animation
                 Transform leProjectile;
-                leProjectile = Instantiate(projectilePrefab, transform.position + new Vector3(0, 0.0f, 0), transform.rotation) as Transform;
+                leProjectile = Instantiate(projectilePrefab, transform.GetChild(2).position + new Vector3(0, 1.6f, 0.0f), transform.rotation) as Transform;
                 //leProjectile.GetComponent<TowerProjectile>().target = nearestEnemy.gameObject;
-
-                StartCoroutine(ThrowProjectile(nearestEnemy.gameObject.transform, leProjectile, transform));
+                StartCoroutine(ThrowProjectile(targetEnemy.gameObject.transform, leProjectile, transform));
                 
                 currentProjectileCD = 0;
             } 
-
         }
-        
     }
 
     IEnumerator ThrowProjectile(Transform target, Transform projectile, Transform tower)
     {
         // Short delay added before Projectile is thrown
-        yield return new WaitForSeconds(1.5f);
-
+        yield return new WaitForSeconds(0.0f);
+        
         // Move projectile to the position of throwing object + add some offset if needed.
-        projectile.position = tower.position + new Vector3(0, 0.0f, 7.0f);
+        //projectile.position = tower.GetChild(0).position + new Vector3(0, 7f, 0.0f);
 
         // Calculate distance to target
-        float target_Distance = Vector3.Distance(projectile.position, target.position);
+        float target_Distance = Vector3.Distance(projectile.position, target.position + (target.forward * 2.5f));
 
         // Calculate the velocity needed to throw the object to the target at specified angle.
         float projectile_Velocity = target_Distance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravity);
