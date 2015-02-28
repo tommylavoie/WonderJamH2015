@@ -20,6 +20,7 @@ public class WaveManager : MonoBehaviour
 	
 	public WaveManager ()
 	{
+		map = Map.Instance;
 		level = 0;
 		numberOfEnemies = 0;
 		waveStarted = false;

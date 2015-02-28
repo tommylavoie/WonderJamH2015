@@ -7,7 +7,7 @@ public class Board : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		map = new Map();
+		map = Map.Instance;
 		createMap();
 		Path path = map.createPath(map.getNodeByName("a1"), map.getNodeByName("f1"));
 	}
