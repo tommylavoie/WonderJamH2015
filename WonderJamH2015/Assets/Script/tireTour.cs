@@ -24,6 +24,6 @@ public class tireTour : MonoBehaviour {
 		pos.y += 10f;
 		projectile = (GameObject)Instantiate(tour);
 		projectile.rigidbody.AddRelativeForce (Vector3.up * (forceHaut	+(force/4)), ForceMode.Impulse);
-		projectile.rigidbody.AddRelativeForce (Vector3.forward * (forceDevant+(force/2)), ForceMode.Impulse);	
+		projectile.rigidbody.AddRelativeForce (Vector3.forward * (forceDevant+(force/4)), ForceMode.Impulse);	
 	}
 }
