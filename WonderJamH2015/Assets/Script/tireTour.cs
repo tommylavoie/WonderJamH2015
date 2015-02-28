@@ -29,8 +29,8 @@ public class tireTour : MonoBehaviour {
 
 	public void tireItem(int force)
 	{
-		tour.transform.localPosition = this.gameObject.transform.localPosition;
-		tour.transform.localRotation = this.gameObject.transform.localRotation;
+		item.transform.localPosition = this.gameObject.transform.localPosition;
+		item.transform.localRotation = this.gameObject.transform.localRotation;
 		Vector3 pos = item.transform.position;
 		pos.y += 10f;
 		projectile = (GameObject)Instantiate(item);
