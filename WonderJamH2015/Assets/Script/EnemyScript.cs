@@ -36,4 +36,9 @@ public class EnemyScript : MonoBehaviour {
 			node = path.getNextEdge().getNodeTo();
 		}
 	}
+
+	public void kill()
+	{
+		Destroy(gameObject);
+	}
 }

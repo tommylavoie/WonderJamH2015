@@ -97,6 +97,13 @@ public class WaveManager : MonoBehaviour
 		{
 			Destroy(projectile);
 		}
+
+		GameObject[] pprojectiles = GameObject.FindGameObjectsWithTag("PlayerProjectile");
+		foreach(GameObject pprojectile in pprojectiles)
+		{
+			Destroy(pprojectile);
+		}
+
 		Map.Instance.setWaveStarted(false);
 	}
 }
