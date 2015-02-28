@@ -13,13 +13,28 @@ using UnityEngine;
 
 public class Map
 {
-	List<PathNode> nodes;
+	private List<PathNode> nodes;
 	private System.Random random;
+
+
+	private static Map instance;
 	
-	public Map ()
+	private Map() 
 	{
 		random = new System.Random();
 		nodes = new List<PathNode>();
+	}
+	
+	public static Map Instance
+	{
+		get 
+		{
+			if (instance == null)
+			{
+				instance = new Map();
+			}
+			return instance;
+		}
 	}
 	
 	public void addNode(PathNode node)

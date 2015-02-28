@@ -7,7 +7,7 @@ public class Board : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		map = new Map();
+		map = Map.Instance;
 		createMap();
 		Path path = map.createPath(map.getNodeByName("a1"), map.getNodeByName("f1"));
 	}
@@ -129,10 +129,16 @@ public class Board : MonoBehaviour
 		map.addNode(e5);
 		map.addNode(f1);
 	}
+
+	public Map getMap()
+	{
+		return map;
+	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		//Debug.Log (chooser.getValue());
 		
 	}
 }

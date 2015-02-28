@@ -3,12 +3,13 @@ using System.Collections.Generic;
 
 public class EnemyScript : MonoBehaviour {
     public float radius = 0.5f;
-	Map map = new Map ();
+	Map map;
 	Path path;
 	PathNode node;
 
 	// Use this for initialization
 	void Start () {
+		map = Map.Instance;
 		createMap();
 		path = map.createPath(map.getNodeByName("A1"), map.getNodeByName("F1"));
 
