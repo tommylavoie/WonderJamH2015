@@ -4,13 +4,13 @@ using System.Collections.Generic;
 public class Board : MonoBehaviour 
 {
 	Map map;
-	ForceChooser chooser;
 	// Use this for initialization
 	void Start () 
 	{
 		map = new Map();
 		createMap();
 		Path path = map.createPath(map.getNodeByName("a1"), map.getNodeByName("f1"));
+		Debug.Log(path.getString());
 		chooser = new ForceChooser();
 	}
 
