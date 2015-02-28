@@ -3,12 +3,18 @@ using System.Collections;
 
 public class ForceChooser
 {
+	public int speed;
+	int RIGHT;
+	int LEFT;
 	int value;
 	int direction;
 	bool active;
 
-	public ForceChooser()
+	public ForceChooser(int speed)
 	{
+		this.speed = speed;
+		RIGHT = speed;
+		LEFT = (speed*-1);
 		active = true;
 		value = 50;
 		direction = RIGHT;
@@ -31,6 +37,9 @@ public class ForceChooser
 		return value;
 	}
 
-	public static int LEFT = -1;
-	public static int RIGHT = 1;
+	public int stop()
+	{
+		active = false;
+		return value;
+	}
 }
