@@ -11,6 +11,9 @@
 /*.userprefs
 /*.pidb
 /*.booproj
+/*.dwlt
+/assetDatabase3
+/guidmapper
 
 #Unity3D Generated File On Crash Reports
 sysinfo.txt
