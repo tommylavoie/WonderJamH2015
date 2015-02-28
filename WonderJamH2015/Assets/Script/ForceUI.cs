@@ -62,12 +62,16 @@ public class ForceUI : MonoBehaviour
 				finalValue = chooser.stop();
 				cursorStopped = true;
 				tireTour script = joueur.GetComponent<tireTour>();
+				int time = 2;
 				if(Map.Instance.isWaveStarted())
 					script.tireItem(finalValue);
 				else
+				{
+					time = 5;
 					script.tireProjectile(finalValue);
+				}
 				delay = true;
-				Invoke("stopDelay", 5);
+				Invoke("stopDelay", time);
 			}
 			if(active && !cursorStopped)
 			{
