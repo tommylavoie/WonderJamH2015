@@ -35,21 +35,24 @@ public class WaveManager : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		if (numberOfEnemies > 0 && !ennemiesInvoked) 
+		if(Map.Instance.isStarted())
 		{
-			Invoke ("addEnnemies", timeBetweenEnnemies);
-			ennemiesInvoked = true;
-		} 
-		if (!waveStarted && !waveInvoked) 
-		{
-			Invoke ("startNextWave", timeBetweenWaves);
-			waveInvoked = true;
-		}
+			if (numberOfEnemies > 0 && !ennemiesInvoked) 
+			{
+				Invoke ("addEnnemies", timeBetweenEnnemies);
+				ennemiesInvoked = true;
+			} 
+			if (!waveStarted && !waveInvoked) 
+			{
+				Invoke ("startNextWave", timeBetweenWaves);
+				waveInvoked = true;
+			}
 
-		GameObject[] ennemies = GameObject.FindGameObjectsWithTag("Enemy");
-		if(ennemies.Length <= 0 && numberOfEnemies <= 0)
-		{
-			waveStarted = false;
+			GameObject[] ennemies = GameObject.FindGameObjectsWithTag("Enemy");
+			if(ennemies.Length <= 0 && numberOfEnemies <= 0)
+			{
+				waveStarted = false;
+			}
 		}
 	}
 	public void startNextWave()

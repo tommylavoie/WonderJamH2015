@@ -12,6 +12,9 @@ public class ForceUI : MonoBehaviour
 	bool cursorStopped;
 	bool active;
 	int finalValue;
+	bool delay = false;
+	bool pressed = false;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -43,29 +46,42 @@ public class ForceUI : MonoBehaviour
 		bar.SetActive(false);
 		cursor.SetActive(false);
 	}
+
+	void stopDelay()
+	{
+		delay = false;
+	}
 	
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
-		if(active && !cursorStopped && Input.GetKeyDown(KeyCode.Space))
+		if(Map.Instance.isStarted() && !delay && !Map.Instance.isGameOver())
 		{
-			Debug.Log ("Tommy suce encore plus");
-			finalValue = chooser.stop();
-			cursorStopped = true;
-			tireTour script = joueur.GetComponent<tireTour>();
-			script.tireProjectile(finalValue);
-		}
-		if(active && !cursorStopped)
-		{
-			chooser.update();
-			int actualValue = chooser.getValue();
-			float newX = bar.transform.position.x - (cursorWidth/2) + (actualValue*cursorWidth/100);
-			cursor.transform.position = new Vector2(newX, cursor.transform.position.y);
-			Invoke("hide", 2);
-		}
-		if(!active && Input.GetKeyDown(KeyCode.Space)){
-			go();
-			Debug.Log ("Tommy suce");
+			if(active && !cursorStopped && !pressed && Input.GetAxis("Jump") > 0)
+			{
+				Debug.Log ("Tommy suce encore plus");
+				finalValue = chooser.stop();
+				cursorStopped = true;
+				tireTour script = joueur.GetComponent<tireTour>();
+				script.tireProjectile(finalValue);
+				delay = true;
+				Invoke("stopDelay", 5);
+			}
+			if(active && !cursorStopped)
+			{
+				chooser.update();
+				int actualValue = chooser.getValue();
+				float newX = bar.transform.position.x - (cursorWidth/2) + (actualValue*cursorWidth/100);
+				cursor.transform.position = new Vector2(newX, cursor.transform.position.y);
+				Invoke("hide", 2);
+			}
+			if(!active && Input.GetAxis("Jump") > 0){
+				go();
+				Debug.Log ("Tommy suce");
+				pressed = true;
+			}
+			if(Input.GetAxis("Jump") == 0)
+				pressed = false;
 		}
 	}
 }

@@ -14,10 +14,11 @@ public class EnemyScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		//transform.position = Vector3.MoveTowards (transform.position, node.gameObject.transform.position, 10 * Time.deltaTime);
-        transform.Translate(new Vector3(0, 0, 0.05f));
-    }
+	void Update () 
+	{
+		if(!map.isGameOver())
+			transform.position = Vector3.MoveTowards (transform.position, node.gameObject.transform.position, 10 * Time.deltaTime);
+	}
 
 	public void setPath(Path path){
 		this.path = path;
@@ -25,7 +26,6 @@ public class EnemyScript : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collision) {
-        Debug.Log(collision.tag);
 		if(collision.gameObject.name.Equals("F1")){
 			Destroy (this.gameObject);
 		}
