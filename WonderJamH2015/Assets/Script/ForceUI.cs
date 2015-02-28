@@ -53,7 +53,7 @@ public class ForceUI : MonoBehaviour
 			finalValue = chooser.stop();
 			cursorStopped = true;
 			tireTour script = joueur.GetComponent<tireTour>();
-			script.Invoke("tireCaliss", 1);
+			script.tireProjectile(finalValue);
 		}
 		if(active && !cursorStopped)
 		{
