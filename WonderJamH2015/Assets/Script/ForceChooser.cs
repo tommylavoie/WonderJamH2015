@@ -9,14 +9,17 @@ public class ForceChooser
 	int value;
 	int direction;
 	bool active;
+	System.Random random;
 
 	public ForceChooser(int speed)
 	{
+		random = new System.Random();
 		this.speed = speed;
 		RIGHT = speed;
 		LEFT = (speed*-1);
 		active = true;
-		value = 50;
+		value = random.Next(0,100);
+		Debug.Log (value);
 		direction = RIGHT;
 	}
 
