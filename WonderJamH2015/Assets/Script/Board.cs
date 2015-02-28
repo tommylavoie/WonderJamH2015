@@ -4,13 +4,16 @@ using System.Collections.Generic;
 public class Board : MonoBehaviour 
 {
 	Map map;
+	ForceChooser chooser;
 	// Use this for initialization
 	void Start () 
 	{
 		map = new Map();
 		createMap();
-		Path path = map.createPath(map.getNodeByName("a1"), map.getNodeByName("e1"));
+		Path path = map.createPath(map.getNodeByName("a1"), map.getNodeByName("f1"));
 		Debug.Log(path.getString());
+
+		chooser = new ForceChooser();
 	}
 
 	void createMap()
@@ -38,6 +41,12 @@ public class Board : MonoBehaviour
 		PathNode d5 = new PathNode("d5");
 
 		PathNode e1 = new PathNode("e1");
+		PathNode e2 = new PathNode("e2");
+		PathNode e3 = new PathNode("e3");
+		PathNode e4 = new PathNode("e4");
+		PathNode e5 = new PathNode("e5");
+
+		PathNode f1 = new PathNode("f1");
 
 		a1.addEdge(b2);
 		a2.addEdge(b3);
@@ -75,15 +84,29 @@ public class Board : MonoBehaviour
 		d1.addEdge(d2);
 		d2.addEdge(d1);
 		d2.addEdge(d3);
-		d2.addEdge(e1);
+		d2.addEdge(e2);
 		d3.addEdge(d2);
 		d3.addEdge(d4);
-		d3.addEdge(e1);
+		d3.addEdge(e3);
 		d4.addEdge(d3);
 		d4.addEdge(d5);
-		d4.addEdge(e1);
+		d4.addEdge(e4);
 		d5.addEdge(d4);
-		d5.addEdge(e1);
+		d5.addEdge(e5);
+
+		e1.addEdge(f1);
+		e1.addEdge(e2);
+		e2.addEdge(e1);
+		e2.addEdge(e3);
+		e2.addEdge(f1);
+		e3.addEdge(e2);
+		e3.addEdge(e4);
+		e3.addEdge(f1);
+		e4.addEdge(e3);
+		e4.addEdge(e5);
+		e4.addEdge(f1);
+		e5.addEdge(e4);
+		e5.addEdge(f1);
 
 		map.addNode(a1);
 		map.addNode(a2);
@@ -104,11 +127,17 @@ public class Board : MonoBehaviour
 		map.addNode(d4);
 		map.addNode(d5);
 		map.addNode(e1);
+		map.addNode(e2);
+		map.addNode(e3);
+		map.addNode(e4);
+		map.addNode(e5);
+		map.addNode(f1);
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-	
+		chooser.update();
+		Debug.Log (chooser.getValue());
 	}
 }
