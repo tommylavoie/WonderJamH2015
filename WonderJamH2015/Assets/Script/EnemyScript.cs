@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class EnemyScript : MonoBehaviour {
     public float radius = 0.5f;
+    public float speed = 2;
 	Transform target;
 	Map map;
 	Path path;
@@ -19,7 +20,7 @@ public class EnemyScript : MonoBehaviour {
 		if(!map.isGameOver())
 		{
 			transform.LookAt(node.gameObject.transform.position);
-			transform.position = Vector3.MoveTowards (transform.position, node.gameObject.transform.position, 2 * Time.deltaTime);
+			transform.position = Vector3.MoveTowards (transform.position, node.gameObject.transform.position, speed * Time.deltaTime);
 		}
         //transform.Translate(new Vector3(0, 0, 0.05f));
     }
@@ -43,6 +44,7 @@ public class EnemyScript : MonoBehaviour {
 
 	public void kill()
 	{
+        Debug.Log("J'ai été touché, dsl");
 		SoundEffectScript.Instance.MakeFillette_ohnonSound();
 		Destroy(gameObject);
 	}
