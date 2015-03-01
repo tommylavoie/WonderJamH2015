@@ -66,7 +66,7 @@ public class tireTour : MonoBehaviour {
 			{
 				Destroy (go);
 			}
-			if(go.tag.Equals("Map") || go.tag.Equals ("Enemy") || go.name.Equals("F1"))
+			if(go.tag.Equals("Map") || go.tag.Equals ("Enemy") || go.name.Equals("F1") || go.tag.Equals("Brocoli"))
 			{
 				go.AddComponent<Rigidbody>();
 				go.rigidbody.useGravity = true;
