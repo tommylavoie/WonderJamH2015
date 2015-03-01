@@ -39,8 +39,12 @@ public class PlayerScript : MonoBehaviour
         frames++;
 
         if (Map.Instance.isStarted() && Input.GetKeyDown(KeyCode.Space)){
-            lancerTours();
         }
+
+		if(Map.Instance.isGameOver() && Input.GetAxis("Fire1") > 0)
+		{
+			Application.LoadLevel("MainMenu");
+		}
 
     }
 

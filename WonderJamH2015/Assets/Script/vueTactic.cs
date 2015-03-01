@@ -4,7 +4,7 @@ using System.Collections;
 public class vueTactic : MonoBehaviour {
 	Vector3 pos;
 	bool started = false;
-	int step = 1;
+	int step = 4;
 	bool invoked = false;
 
 	// Use this for initialization
@@ -27,14 +27,14 @@ public class vueTactic : MonoBehaviour {
 	void Update () {
 		if(started)
 		{
-			if (Input.GetKeyDown(KeyCode.V)) {
+			if (Input.GetAxis("Fire2") > 0) {
 				pos.x = 0f;
 				pos.y = 50.3f;
 				pos.z = 14.4f;
 				this.gameObject.transform.rotation = Quaternion.AngleAxis(90, Vector3.right);
 				this.gameObject.transform.position = pos;
 			}
-			if (Input.GetKeyUp (KeyCode.V)) {
+			else {
 				pos.x = 0f;
 				pos.y = 13.49f;
 				pos.z = -28.65f;

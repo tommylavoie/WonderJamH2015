@@ -59,7 +59,7 @@ public class ForceUI : MonoBehaviour
 	{
 		if(Map.Instance.isStarted() && !delay && !Map.Instance.isGameOver())
 		{
-			if(active && !cursorStopped && !pressed && Input.GetAxis("Jump") > 0)
+			if(active && !cursorStopped && !pressed && Input.GetAxis("Jump") > 0 && Input.GetAxis("Fire2") == 0)
 			{
 				finalValue = chooser.stop();
 				cursorStopped = true;
@@ -85,7 +85,7 @@ public class ForceUI : MonoBehaviour
 				cursor.transform.position = new Vector2(newX, cursor.transform.position.y);
 				Invoke("hide", 2);
 			}
-			if(!active && Input.GetAxis("Jump") > 0){
+			if(!active && Input.GetAxis("Jump") > 0 && Input.GetAxis("Fire2") == 0){
 				go();
 				pressed = true;
 			}

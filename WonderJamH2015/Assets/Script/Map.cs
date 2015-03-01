@@ -39,7 +39,7 @@ public class Map
 			return instance;
 		}
 	}
-	
+
 	public void addNode(PathNode node)
 	{
 		nodes.Add(node);
