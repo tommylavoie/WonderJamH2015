@@ -19,7 +19,6 @@ public class ForceChooser
 		LEFT = (speed*-1);
 		active = true;
 		value = random.Next(0,100);
-		Debug.Log (value);
 		direction = RIGHT;
 	}
 
