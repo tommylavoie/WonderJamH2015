@@ -47,7 +47,7 @@ public class PlayerScript : MonoBehaviour
     void RotateDroite()
     {
         if (rotation < 35 && rotation >= -35) {
-			leTransform.Rotate(Vector3.up, Mathf.Abs(Input.GetAxis("Horizontal")));
+			leTransform.Rotate(Vector3.up, 1/*Mathf.Abs(Input.GetAxis("Horizontal"))*/);
             rotation++;
           
         }
@@ -56,7 +56,7 @@ public class PlayerScript : MonoBehaviour
     void RotateGauche()
     {
         if (rotation <= 35 && rotation > -35) {
-			leTransform.Rotate(Vector3.down, Mathf.Abs(Input.GetAxis("Horizontal")));
+			leTransform.Rotate(Vector3.down, 1/*Mathf.Abs(Input.GetAxis("Horizontal"))*/);
             rotation--;
         }
     }
