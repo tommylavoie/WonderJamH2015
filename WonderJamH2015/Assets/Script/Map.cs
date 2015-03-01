@@ -40,11 +40,6 @@ public class Map
 		}
 	}
 
-	public static void restartInstance()
-	{
-		instance = new Map();
-	}
-	
 	public void addNode(PathNode node)
 	{
 		nodes.Add(node);

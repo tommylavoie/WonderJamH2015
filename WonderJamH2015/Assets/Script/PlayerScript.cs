@@ -43,7 +43,6 @@ public class PlayerScript : MonoBehaviour
 
 		if(Map.Instance.isGameOver() && Input.GetAxis("Fire1") > 0)
 		{
-			Map.restartInstance();
 			Application.LoadLevel("MainMenu");
 		}
 
