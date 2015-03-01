@@ -21,7 +21,7 @@ public class TowerProjectile : MonoBehaviour
         if (otherCollider.tag == "Enemy")
         {
             Debug.Log("Hey un enemie, tuons le :D");
-            Destroy(otherCollider.gameObject);
+			otherCollider.GetComponent<EnemyScript>().kill();
             Destroy(this);
         }
     }

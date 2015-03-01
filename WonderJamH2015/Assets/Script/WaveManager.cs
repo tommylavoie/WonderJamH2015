@@ -39,7 +39,7 @@ public class WaveManager : MonoBehaviour
 	{
 		if(timerStarted)
 			timer += Time.deltaTime;
-		if(Map.Instance.isStarted())
+		if(Map.Instance.isStarted() && !map.isGameOver())
 		{
 			if (numberOfEnemies > 0 && !ennemiesInvoked) 
 			{
@@ -70,6 +70,7 @@ public class WaveManager : MonoBehaviour
 
 	public void startNextWave()
 	{
+		SoundEffectScript.Instance.MakeNext_waveSound();
 		timerStarted = false;
 		timer = timeBetweenWaves;
 		level++;	

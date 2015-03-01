@@ -171,6 +171,7 @@ public class TowerScript : MonoBehaviour {
 			}
 		}
 
-        projectile.gameObject.rigidbody.useGravity = true;
+		if(projectile != null)
+        	projectile.gameObject.rigidbody.useGravity = true;
     }
 }
