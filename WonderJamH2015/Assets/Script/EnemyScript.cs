@@ -43,6 +43,8 @@ public class EnemyScript : MonoBehaviour {
 
 	public void kill()
 	{
+		SoundEffectScript.Instance.MakeBanana_splatSound();
+		SoundEffectScript.Instance.MakeFillette_ohnonSound();
 		Destroy(gameObject);
 	}
 }

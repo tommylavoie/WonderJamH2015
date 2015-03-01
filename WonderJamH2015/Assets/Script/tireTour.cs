@@ -6,6 +6,7 @@ public class tireTour : MonoBehaviour {
 	public GameObject tour2;
 	public GameObject chaise;
 	public GameObject item;
+	public GameObject table;
 	GameObject projectile;
 	public int forceHaut;
 	public int forceDevant;
@@ -53,5 +54,29 @@ public class tireTour : MonoBehaviour {
 		projectile = (GameObject)Instantiate(item);
 		projectile.rigidbody.AddRelativeForce (Vector3.up * (forceHaut	+(force/4)), ForceMode.Impulse);
 		projectile.rigidbody.AddRelativeForce (Vector3.forward * (forceDevant+(force/4)), ForceMode.Impulse);
+	}
+
+	public void flipTable(int force)
+	{
+		GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>() ;
+		foreach(GameObject go in allObjects)
+		if (go.activeInHierarchy)
+		{
+			if(go.tag.Equals ("Enemy"))
+			{
+				Destroy (go);
+			}
+			if(go.tag.Equals("Map") || go.tag.Equals ("Enemy") || go.name.Equals("F1"))
+			{
+				go.AddComponent<Rigidbody>();
+				go.rigidbody.useGravity = true;
+				go.rigidbody.mass = 1;
+				go.rigidbody.AddRelativeForce (Vector3.up * (forceHaut	+(force/2)), ForceMode.Impulse);
+				go.rigidbody.AddRelativeForce (Vector3.forward * (forceDevant+(force/2)), ForceMode.Impulse);
+			}
+		}
+
+		table.rigidbody.AddRelativeForce (Vector3.up * (forceHaut	+(force/2)), ForceMode.Impulse);
+		table.rigidbody.AddRelativeForce (Vector3.forward * (forceDevant+(force/2)), ForceMode.Impulse);
 	}
 }

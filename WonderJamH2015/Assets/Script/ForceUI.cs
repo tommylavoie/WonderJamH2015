@@ -14,7 +14,9 @@ public class ForceUI : MonoBehaviour
 	int finalValue;
 	bool delay = false;
 	bool pressed = false;
+	bool pressedTableFlip = false;
 	Animator anim;
+	int sound = 0;
 
 	// Use this for initialization
 	void Start () 
@@ -53,30 +55,41 @@ public class ForceUI : MonoBehaviour
 	{
 		delay = false;
 	}
+
+	void playSound()
+	{
+		if(sound == 0)
+			SoundEffectScript.Instance.MakeGrowl_1Sound();
+		else if(sound == 1)
+			SoundEffectScript.Instance.MakeGrowl_2Sound();
+		else if(sound == 2)
+			SoundEffectScript.Instance.MakeGrowl_3Sound();
+		else
+			SoundEffectScript.Instance.MakeGrowl_4Sound();
+		sound++;
+		if(sound >= 4)
+			sound = 0;
+	}
 	
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
 		if(Map.Instance.isStarted() && !delay && !Map.Instance.isGameOver())
 		{
-			if(active && !cursorStopped && !pressed && Input.GetAxis("Jump") > 0 && Input.GetAxis("Fire2") == 0)
+			if(active && !cursorStopped && !pressed && Input.GetAxis("Jump") > 0 && Input.GetAxis("Fire2") == 0 && !pressedTableFlip)
 			{
 				finalValue = chooser.stop();
 				cursorStopped = true;
-				tireTour script = joueur.GetComponent<tireTour>();
-				int time = 2;
-				if(Map.Instance.isWaveStarted()){
-					script.tireItem(finalValue);
-					anim.SetTrigger("TireBanane");
-				}
-				else{
-					time = 5;
-					script.tireProjectile(finalValue);
-					anim.SetTrigger("TireTour");
-				}
-				delay = true;
-				Invoke("stopDelay", time);
+				tirer();
 			}
+
+			if(active && !cursorStopped && !pressed && Input.GetAxis("Jump") > 0 && Input.GetAxis("Fire2") == 0 && pressedTableFlip)
+			{
+				finalValue = chooser.stop();
+				cursorStopped = true;
+				flipTable();
+			}
+
 			if(active && !cursorStopped)
 			{
 				chooser.update();
@@ -91,6 +104,44 @@ public class ForceUI : MonoBehaviour
 			}
 			if(Input.GetAxis("Jump") == 0)
 				pressed = false;
+
+			if(Input.GetAxis ("Fire3") > 0)
+			{
+				pressedTableFlip = true;
+				go ();
+			}
 		}
+	}
+
+	void tirer()
+	{
+		tireTour script = joueur.GetComponent<tireTour>();
+		int time = 2;
+		if(Map.Instance.isWaveStarted()){
+			script.tireItem(finalValue);
+			anim.SetTrigger("TireBanane");
+			playSound();
+			SoundEffectScript.Instance.MakeBanana_foompSound();
+		}
+		else{
+			time = 5;
+			script.tireProjectile(finalValue);
+			anim.SetTrigger("TireTour");
+			playSound();
+			SoundEffectScript.Instance.Maketower_fwiiiinSound();
+		}
+		delay = true;
+		Invoke("stopDelay", time);
+	}
+
+	void flipTable()
+	{
+		tireTour script = joueur.GetComponent<tireTour>();
+		script.flipTable(finalValue);
+		playSound ();
+		playSound ();
+		playSound();
+		playSound();
+		Map.Instance.setGameOver(true);
 	}
 }
