@@ -13,8 +13,8 @@ public class WaveManager : MonoBehaviour
 {
 	public GameObject enemyPrefab;
 	public Map map;
-	public int timeBetweenWaves;
-	public int timeBetweenEnnemies;
+	public int timeBetweenWaves = 5;
+	public int timeBetweenEnnemies = 3;
 	int level;
 	int numberOfEnemies;
 	bool waveStarted;
@@ -32,8 +32,6 @@ public class WaveManager : MonoBehaviour
 		waveStarted = false;
 		ennemiesInvoked = false;
 		waveInvoked = false;
-		timeBetweenWaves = 5;
-		timeBetweenEnnemies = 3;
 		waveTextX = Screen.width;
 	}
 
@@ -62,8 +60,12 @@ public class WaveManager : MonoBehaviour
 				endWave();
 			}
 		}
+	}
+
+	void LateUpdate()
+	{
 		if(waveTextX < Screen.width)
-			waveTextX += 6;
+			waveTextX += 7;
 	}
 
 	public void startNextWave()
