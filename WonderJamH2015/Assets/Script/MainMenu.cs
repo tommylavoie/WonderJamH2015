@@ -14,6 +14,7 @@ public class MainMenu : MonoBehaviour {
 	{
 		if(Input.GetAxis("Fire1") > 0)
 		{
+			Map.Instance.restartInstance();
 			Application.LoadLevel("Main");
 		}
 	}

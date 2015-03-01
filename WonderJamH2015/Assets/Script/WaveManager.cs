@@ -34,6 +34,7 @@ public class WaveManager : MonoBehaviour
 		waveInvoked = false;
 		timeBetweenWaves = 5;
 		timeBetweenEnnemies = 3;
+		waveTextX = Screen.width;
 	}
 
 	void FixedUpdate()
@@ -62,7 +63,7 @@ public class WaveManager : MonoBehaviour
 			}
 		}
 		if(waveTextX < Screen.width)
-			waveTextX += 3;
+			waveTextX += 6;
 	}
 
 	public void startNextWave()

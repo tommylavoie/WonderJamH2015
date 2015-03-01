@@ -28,7 +28,8 @@ public class TowerScript : MonoBehaviour {
         {
             if (AttackMode){ FindNearestEnemy(); }
             else { FindMostFarEnemy(); }
-            AttackTargetEnemy();
+			if(!Map.Instance.isGameOver())
+            	AttackTargetEnemy();
             attackFrameCount = 0;
         }
 
