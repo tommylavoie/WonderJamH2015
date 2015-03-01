@@ -2,7 +2,11 @@ fileFormatVersion: 2
 guid: 7af95d10b5d07554ea98e9a93056ae7c
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - tour1: {instanceID: 0}
+  - tour2: {instanceID: 0}
+  - chaise: {instanceID: 0}
+  - item: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
