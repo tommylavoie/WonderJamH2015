@@ -16,6 +16,7 @@ public class vueTactic : MonoBehaviour {
 		pos.z = 26.4f;
 		this.gameObject.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
 		this.gameObject.transform.position = pos;
+
 		actualView = Quaternion.AngleAxis(25, Vector3.right);
 	}
 

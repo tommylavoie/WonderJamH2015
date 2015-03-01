@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 67a8bc620db7c4d4c9eddd289c6d8ad5
+guid: f1e5ea855ba53644d82313b1dc36faa3
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -69,7 +69,7 @@ ModelImporter:
     400062: //RootNode
     4300000: G__Girl_Body_Geo
     4300002: G__Girl_Hair_Geo
-    7400000: Take 001
+    7400000: Fall
     9500000: //RootNode
     13700000: G__Girl_Body_Geo
     13700002: G__Girl_Hair_Geo
@@ -88,7 +88,97 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Fall
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 14
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_Pelvis_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_Pelvis_Jnt/G__Bind_Girl_CT_TutuA_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_Pelvis_Jnt/G__Bind_Girl_CT_TutuA_Jnt/G__Bind_Girl_CT_TutuB_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_Pelvis_Jnt/G__Bind_Girl_LF_Hip_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_Pelvis_Jnt/G__Bind_Girl_LF_Hip_Jnt/G__Bind_Girl_LF_Knee_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_Pelvis_Jnt/G__Bind_Girl_LF_Hip_Jnt/G__Bind_Girl_LF_Knee_Jnt/G__Bind_Girl_LF_Ankle_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_Pelvis_Jnt/G__Bind_Girl_RT_Hip_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_Pelvis_Jnt/G__Bind_Girl_RT_Hip_Jnt/G__Bind_Girl_RT_Knee_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_Pelvis_Jnt/G__Bind_Girl_RT_Hip_Jnt/G__Bind_Girl_RT_Knee_Jnt/G__Bind_Girl_RT_Ankle_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_SpineA_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_SpineA_Jnt/G__Bind_Girl_CT_SpineB_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_SpineA_Jnt/G__Bind_Girl_CT_SpineB_Jnt/G__Bind_Girl_CT_Neck_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_SpineA_Jnt/G__Bind_Girl_CT_SpineB_Jnt/G__Bind_Girl_CT_Neck_Jnt/G__Bind_Girl_CT_Head_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_SpineA_Jnt/G__Bind_Girl_CT_SpineB_Jnt/G__Bind_Girl_CT_Neck_Jnt/G__Bind_Girl_CT_Head_Jnt/G__Bind_Girl_CT_Head_Top_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_SpineA_Jnt/G__Bind_Girl_CT_SpineB_Jnt/G__Bind_Girl_CT_Neck_Jnt/G__Bind_Girl_CT_Head_Jnt/G__Bind_Girl_CT_Head_Top_Jnt/G__Bind_Girl_CT_PonytailA_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_SpineA_Jnt/G__Bind_Girl_CT_SpineB_Jnt/G__Bind_Girl_CT_Neck_Jnt/G__Bind_Girl_CT_Head_Jnt/G__Bind_Girl_CT_Head_Top_Jnt/G__Bind_Girl_CT_PonytailA_Jnt/G__Bind_Girl_CT_PonytailB_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_SpineA_Jnt/G__Bind_Girl_CT_SpineB_Jnt/G__Bind_Girl_LF_Shoulder_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_SpineA_Jnt/G__Bind_Girl_CT_SpineB_Jnt/G__Bind_Girl_LF_Shoulder_Jnt/G__Bind_Girl_LF_Elbow_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_SpineA_Jnt/G__Bind_Girl_CT_SpineB_Jnt/G__Bind_Girl_LF_Shoulder_Jnt/G__Bind_Girl_LF_Elbow_Jnt/G__Bind_Girl_LF_Wrist_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_SpineA_Jnt/G__Bind_Girl_CT_SpineB_Jnt/G__Bind_Girl_LF_Shoulder_Jnt/G__Bind_Girl_LF_Elbow_Jnt/G__Bind_Girl_LF_Wrist_Jnt/G__Bind_Girl_LF_Hand_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_SpineA_Jnt/G__Bind_Girl_CT_SpineB_Jnt/G__Bind_Girl_LF_Shoulder_Jnt/G__Bind_Girl_LF_Elbow_Jnt/G__Bind_Girl_LF_Wrist_Jnt/G__Bind_Girl_LF_Hand_Jnt/G__Bind_Girl_LF_FingersA_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_SpineA_Jnt/G__Bind_Girl_CT_SpineB_Jnt/G__Bind_Girl_LF_Shoulder_Jnt/G__Bind_Girl_LF_Elbow_Jnt/G__Bind_Girl_LF_Wrist_Jnt/G__Bind_Girl_LF_Hand_Jnt/G__Bind_Girl_LF_ThumbA_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_SpineA_Jnt/G__Bind_Girl_CT_SpineB_Jnt/G__Bind_Girl_RT_Shoulder_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_SpineA_Jnt/G__Bind_Girl_CT_SpineB_Jnt/G__Bind_Girl_RT_Shoulder_Jnt/G__Bind_Girl_RT_Elbow_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_SpineA_Jnt/G__Bind_Girl_CT_SpineB_Jnt/G__Bind_Girl_RT_Shoulder_Jnt/G__Bind_Girl_RT_Elbow_Jnt/G__Bind_Girl_RT_Wrist_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_SpineA_Jnt/G__Bind_Girl_CT_SpineB_Jnt/G__Bind_Girl_RT_Shoulder_Jnt/G__Bind_Girl_RT_Elbow_Jnt/G__Bind_Girl_RT_Wrist_Jnt/G__Bind_Girl_RT_Hand_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_SpineA_Jnt/G__Bind_Girl_CT_SpineB_Jnt/G__Bind_Girl_RT_Shoulder_Jnt/G__Bind_Girl_RT_Elbow_Jnt/G__Bind_Girl_RT_Wrist_Jnt/G__Bind_Girl_RT_Hand_Jnt/G__Bind_Girl_RT_FingersA_Jnt
+        weight: 1
+      - path: G__Bind_Girl_CT_Root_Jnt1/G__Bind_Girl_CT_SpineA_Jnt/G__Bind_Girl_CT_SpineB_Jnt/G__Bind_Girl_RT_Shoulder_Jnt/G__Bind_Girl_RT_Elbow_Jnt/G__Bind_Girl_RT_Wrist_Jnt/G__Bind_Girl_RT_Hand_Jnt/G__Bind_Girl_RT_ThumbA_Jnt
+        weight: 1
+      - path: G__Girl_Body_Geo
+        weight: 1
+      - path: G__Girl_Hair_Geo
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
