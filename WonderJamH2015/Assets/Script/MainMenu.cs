@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour {
 
 	public void play()
 	{
+		Map.Instance.restartInstance();
 		Application.LoadLevel("Main");
 	}
 

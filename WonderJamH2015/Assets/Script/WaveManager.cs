@@ -131,9 +131,9 @@ public class WaveManager : MonoBehaviour
 		GUIStyle style = new GUIStyle();
 		style.fontSize = 20;
 		style.normal.textColor = Color.white;
-		GUI.Label(new Rect(Screen.width-130,10, 130, 20), "Ennemis restants: " + Math.Max(ennemiesOnMap, numberOfEnemies));
+		GUI.Label(new Rect(Screen.width-130,0, 130, 20), "Ennemis restants: " + Math.Max(ennemiesOnMap, numberOfEnemies));
 		if(timerStarted)
-			GUI.Label(new Rect(Screen.width-130,20, 130, 20), "Prochaine vague: " + Mathf.Round((timeBetweenWaves - timer)));
+			GUI.Label(new Rect(Screen.width-130,10, 130, 20), "Prochaine vague: " + Mathf.Round((timeBetweenWaves - timer)));
 		GUI.Label(new Rect(waveTextX,Screen.height/6, 130, 20), "Vague " + this.level, style);
 	}
 }
