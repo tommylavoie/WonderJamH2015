@@ -20,6 +20,9 @@ public class WaveManager : MonoBehaviour
 	bool waveStarted;
 	bool waveInvoked;
 	bool ennemiesInvoked;
+	float timer = 0;
+	bool timerStarted = false;
+	float waveTextX = 1000;
 	
 	void Start()
 	{
@@ -31,10 +34,13 @@ public class WaveManager : MonoBehaviour
 		waveInvoked = false;
 		timeBetweenWaves = 5;
 		timeBetweenEnnemies = 3;
+		waveTextX = Screen.width;
 	}
 
 	void FixedUpdate()
 	{
+		if(timerStarted)
+			timer += Time.deltaTime;
 		if(Map.Instance.isStarted())
 		{
 			if (numberOfEnemies > 0 && !ennemiesInvoked) 
@@ -45,6 +51,8 @@ public class WaveManager : MonoBehaviour
 			if (!waveStarted && !waveInvoked) 
 			{
 				Invoke ("startNextWave", timeBetweenWaves);
+				timerStarted = true;
+				timer = 0;
 				waveInvoked = true;
 			}
 
@@ -54,15 +62,20 @@ public class WaveManager : MonoBehaviour
 				endWave();
 			}
 		}
+		if(waveTextX < Screen.width)
+			waveTextX += 6;
 	}
 
 	public void startNextWave()
 	{
+		timerStarted = false;
+		timer = timeBetweenWaves;
 		level++;	
 		numberOfEnemies = level*2;
 		waveStarted = true;
 		waveInvoked = false;
 		Map.Instance.setWaveStarted(true);
+		waveTextX = -30f;
 	}
 
 	public Path getEnemyPath(string startNode)
@@ -105,6 +118,17 @@ public class WaveManager : MonoBehaviour
 		}
 
 		Map.Instance.setWaveStarted(false);
+	}
+
+	public void OnGUI()
+	{
+		GUIStyle style = new GUIStyle();
+		style.fontSize = 20;
+		style.normal.textColor = Color.white;
+		//GUI.Label(new Rect(Screen.width-130,10, 130, 20), "Niveau: " + this.level);
+		if(timerStarted)
+			GUI.Label(new Rect(Screen.width-130,10, 130, 20), "Prochaine vague: " + Mathf.Round((timeBetweenWaves - timer)));
+		GUI.Label(new Rect(waveTextX,Screen.height/6, 130, 20), "Vague " + this.level, style);
 	}
 }
 

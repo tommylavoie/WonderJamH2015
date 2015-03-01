@@ -21,7 +21,8 @@ public class tireTour : MonoBehaviour {
 		tour.transform.localPosition = this.gameObject.transform.localPosition;
 		tour.transform.localRotation = this.gameObject.transform.localRotation;
 		Vector3 pos = tour.transform.position;
-		pos.y += 10f;
+		pos.y += 5f;
+		tour.transform.localPosition = pos;
 		projectile = (GameObject)Instantiate(tour);
 		projectile.rigidbody.AddRelativeForce (Vector3.up * (forceHaut	+(force/4)), ForceMode.Impulse);
 		projectile.rigidbody.AddRelativeForce (Vector3.forward * (forceDevant+(force/4)), ForceMode.Impulse);	
@@ -32,7 +33,12 @@ public class tireTour : MonoBehaviour {
 		item.transform.localPosition = this.gameObject.transform.localPosition;
 		item.transform.localRotation = this.gameObject.transform.localRotation;
 		Vector3 pos = item.transform.position;
-		pos.y += 10f;
+		pos.x -= 1.147f;
+		pos.y += 0.422f;
+		pos.z += 0.414f;
+		pos.y += 5f;
+		item.transform.localPosition = pos;
+		item.transform.position = pos;
 		projectile = (GameObject)Instantiate(item);
 		projectile.rigidbody.AddRelativeForce (Vector3.up * (forceHaut	+(force/4)), ForceMode.Impulse);
 		projectile.rigidbody.AddRelativeForce (Vector3.forward * (forceDevant+(force/4)), ForceMode.Impulse);

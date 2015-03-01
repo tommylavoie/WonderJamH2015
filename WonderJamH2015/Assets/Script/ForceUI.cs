@@ -14,6 +14,7 @@ public class ForceUI : MonoBehaviour
 	int finalValue;
 	bool delay = false;
 	bool pressed = false;
+	Animator anim;
 
 	// Use this for initialization
 	void Start () 
@@ -23,6 +24,7 @@ public class ForceUI : MonoBehaviour
 		cursorStopped = true;
 		chooser = new ForceChooser(speed);
 		cursorWidth = ((RectTransform)bar.GetComponent<RectTransform>()).sizeDelta.x;
+		anim = joueur.GetComponent<Animator>();
 	}
 
 	public void go()
@@ -57,18 +59,20 @@ public class ForceUI : MonoBehaviour
 	{
 		if(Map.Instance.isStarted() && !delay && !Map.Instance.isGameOver())
 		{
-			if(active && !cursorStopped && !pressed && Input.GetAxis("Jump") > 0)
+			if(active && !cursorStopped && !pressed && Input.GetAxis("Jump") > 0 && Input.GetAxis("Fire2") == 0)
 			{
 				finalValue = chooser.stop();
 				cursorStopped = true;
 				tireTour script = joueur.GetComponent<tireTour>();
 				int time = 2;
-				if(Map.Instance.isWaveStarted())
+				if(Map.Instance.isWaveStarted()){
 					script.tireItem(finalValue);
-				else
-				{
+					anim.SetTrigger("TireBanane");
+				}
+				else{
 					time = 5;
 					script.tireProjectile(finalValue);
+					anim.SetTrigger("TireTour");
 				}
 				delay = true;
 				Invoke("stopDelay", time);
@@ -81,7 +85,7 @@ public class ForceUI : MonoBehaviour
 				cursor.transform.position = new Vector2(newX, cursor.transform.position.y);
 				Invoke("hide", 2);
 			}
-			if(!active && Input.GetAxis("Jump") > 0){
+			if(!active && Input.GetAxis("Jump") > 0 && Input.GetAxis("Fire2") == 0){
 				go();
 				pressed = true;
 			}

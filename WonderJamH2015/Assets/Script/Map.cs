@@ -39,7 +39,12 @@ public class Map
 			return instance;
 		}
 	}
-	
+
+	public void restartInstance()
+	{
+		instance = new Map();
+	}
+
 	public void addNode(PathNode node)
 	{
 		nodes.Add(node);
