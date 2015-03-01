@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System.Collections;
+using System;
 using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class WaveManager : MonoBehaviour
 	float timer = 0;
 	bool timerStarted = false;
 	float waveTextX = 1000;
+	int ennemiesOnMap = 0;
 	
 	void Start()
 	{
@@ -55,7 +57,8 @@ public class WaveManager : MonoBehaviour
 			}
 
 			GameObject[] ennemies = GameObject.FindGameObjectsWithTag("Enemy");
-			if(ennemies.Length <= 0 && numberOfEnemies <= 0)
+			ennemiesOnMap = ennemies.Length;
+			if(ennemiesOnMap <= 0 && numberOfEnemies <= 0)
 			{
 				endWave();
 			}
@@ -128,9 +131,9 @@ public class WaveManager : MonoBehaviour
 		GUIStyle style = new GUIStyle();
 		style.fontSize = 20;
 		style.normal.textColor = Color.white;
-		//GUI.Label(new Rect(Screen.width-130,10, 130, 20), "Niveau: " + this.level);
+		GUI.Label(new Rect(Screen.width-130,10, 130, 20), "Ennemis restants: " + Math.Max(ennemiesOnMap, numberOfEnemies));
 		if(timerStarted)
-			GUI.Label(new Rect(Screen.width-130,10, 130, 20), "Prochaine vague: " + Mathf.Round((timeBetweenWaves - timer)));
+			GUI.Label(new Rect(Screen.width-130,20, 130, 20), "Prochaine vague: " + Mathf.Round((timeBetweenWaves - timer)));
 		GUI.Label(new Rect(waveTextX,Screen.height/6, 130, 20), "Vague " + this.level, style);
 	}
 }
