@@ -26,7 +26,10 @@ public class ForceUI : MonoBehaviour
 		cursorStopped = true;
 		chooser = new ForceChooser(speed);
 		cursorWidth = ((RectTransform)bar.GetComponent<RectTransform>()).sizeDelta.x;
+		float cursorHeight = ((RectTransform)bar.GetComponent<RectTransform>()).sizeDelta.y;
 		anim = joueur.GetComponent<Animator>();
+
+		bar.transform.position = new Vector3(Screen.width/2,Screen.height-cursorHeight,0);
 	}
 
 	public void go()
@@ -94,8 +97,8 @@ public class ForceUI : MonoBehaviour
 			{
 				chooser.update();
 				int actualValue = chooser.getValue();
-				float newX = bar.transform.position.x - (cursorWidth/2) + (actualValue*cursorWidth/100);
-				cursor.transform.position = new Vector2(newX, cursor.transform.position.y);
+				float newX = bar.transform.localPosition.x - (cursorWidth/2) + (actualValue*cursorWidth/100);
+				cursor.transform.localPosition = new Vector2(newX, bar.transform.localPosition.y);
 				Invoke("hide", 2);
 			}
 			if(!active && Input.GetAxis("Jump") > 0 && Input.GetAxis("Fire2") == 0){
