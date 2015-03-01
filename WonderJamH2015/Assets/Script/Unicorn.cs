@@ -9,11 +9,13 @@ public class Unicorn : MonoBehaviour
 	int lives = 10;
 	bool soundPlayed = false;
 	public Sprite heartEmpty;
-	GameObject[] hearts;
+	Image[] hearts;
+	public Canvas canvas;
 	// Use this for initialization
 	void Start () 
 	{
-		hearts = GameObject.FindGameObjectsWithTag("Heart");
+		hearts = canvas.GetComponentsInChildren<Image>();
+		//hearts = GameObject.FindGameObjectsWithTag("Heart");
 	}
 	
 	// Update is called once per frame
@@ -37,7 +39,7 @@ public class Unicorn : MonoBehaviour
 			SoundEffectScript.Instance.MakeFillette_ahahahahSound();
 			if(lives > 0)
 			{
-				hearts[10-lives].GetComponent<Image>().overrideSprite = (heartEmpty);
+				hearts[lives-1].overrideSprite = (heartEmpty);
 				lives--;
 			}
 		}
