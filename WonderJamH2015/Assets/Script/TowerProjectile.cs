@@ -20,7 +20,6 @@ public class TowerProjectile : MonoBehaviour
     {
         if (otherCollider.tag == "Enemy")
         {
-            Debug.Log("Hey un enemie, tuons le :D");
 			otherCollider.GetComponent<EnemyScript>().kill();
             Destroy(this);
         }
