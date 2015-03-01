@@ -5,7 +5,6 @@ public class PlayerScript : MonoBehaviour
 {
     public Transform leTransform;
     public float moveXFrame = 10;
-    public byte mode; // 0 = tourMode 1 = gun mode
     float frames;
     float rotation;
     
@@ -37,10 +36,6 @@ public class PlayerScript : MonoBehaviour
             frames = 0;
         }
         frames++;
-
-        if (Map.Instance.isStarted() && Input.GetKeyDown(KeyCode.Space)){
-        }
-
     }
 
     // Fonction de rotation vers la droite
@@ -60,6 +55,4 @@ public class PlayerScript : MonoBehaviour
             rotation--;
         }
     }
-
-    void lancerTours() { }
 }
