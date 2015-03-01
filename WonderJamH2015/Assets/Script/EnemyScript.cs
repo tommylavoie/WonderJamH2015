@@ -19,7 +19,7 @@ public class EnemyScript : MonoBehaviour {
 		if(!map.isGameOver())
 		{
 			transform.LookAt(node.gameObject.transform.position);
-			transform.position = Vector3.MoveTowards (transform.position, node.gameObject.transform.position, 10 * Time.deltaTime);
+			transform.position = Vector3.MoveTowards (transform.position, node.gameObject.transform.position, 2 * Time.deltaTime);
 		}
         //transform.Translate(new Vector3(0, 0, 0.05f));
     }
