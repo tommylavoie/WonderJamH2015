@@ -138,7 +138,9 @@ public class TowerScript : MonoBehaviour {
 		if(projectile != null)
 		{
 	        // Calculate distance to target
-	        float target_Distance = Vector3.Distance(projectile.position, target.position + (target.forward * 2.5f));
+            Debug.Log("target position : " + target.position);
+            Debug.Log("target direction : " + target.forward);
+	        float target_Distance = Vector3.Distance(projectile.position, target.position + (target.forward * (target.GetComponent<EnemyScript>().speed * 2)));
 
 	        // Calculate the velocity needed to throw the object to the target at specified angle.
 	        float projectile_Velocity = target_Distance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravity);
@@ -153,7 +155,7 @@ public class TowerScript : MonoBehaviour {
 			if(projectile != null)
 			{
 		        // Rotate projectile to face the target.
-		        projectile.rotation = Quaternion.LookRotation(target.position - projectile.position);
+		        projectile.rotation = Quaternion.LookRotation((target.position + (target.forward * 4f)) - projectile.position);
 
 		        float elapse_time = 0;
 

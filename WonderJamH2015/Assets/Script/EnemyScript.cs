@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class EnemyScript : MonoBehaviour {
     public float radius = 0.5f;
+    public float speed = 2;
 	Transform target;
 	Map map;
 	Path path;
