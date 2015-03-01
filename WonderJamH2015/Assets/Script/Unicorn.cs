@@ -36,7 +36,7 @@ public class Unicorn : MonoBehaviour
 
 	void OnGUI()
 	{
-		GUI.Label(new Rect(10, 10, 100, 20), "Vies: " + lives);
+		//GUI.Label(new Rect(10, 10, 100, 20), "Vies: " + lives);
 		if(Map.Instance.isGameOver())
 		{
 			GUI.Label(new Rect(Screen.width/2, Screen.height/2, 100, 20), "GAME OVER");
