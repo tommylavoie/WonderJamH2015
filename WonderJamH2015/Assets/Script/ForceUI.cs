@@ -14,6 +14,7 @@ public class ForceUI : MonoBehaviour
 	int finalValue;
 	bool delay = false;
 	bool pressed = false;
+	Animator anim;
 
 	// Use this for initialization
 	void Start () 
@@ -23,6 +24,7 @@ public class ForceUI : MonoBehaviour
 		cursorStopped = true;
 		chooser = new ForceChooser(speed);
 		cursorWidth = ((RectTransform)bar.GetComponent<RectTransform>()).sizeDelta.x;
+		anim = joueur.GetComponent<Animator>();
 	}
 
 	public void go()
@@ -63,12 +65,14 @@ public class ForceUI : MonoBehaviour
 				cursorStopped = true;
 				tireTour script = joueur.GetComponent<tireTour>();
 				int time = 2;
-				if(Map.Instance.isWaveStarted())
+				if(Map.Instance.isWaveStarted()){
 					script.tireItem(finalValue);
-				else
-				{
+					anim.SetTrigger("TireBanane");
+				}
+				else{
 					time = 5;
 					script.tireProjectile(finalValue);
+					anim.SetTrigger("TireTour");
 				}
 				delay = true;
 				Invoke("stopDelay", time);
