@@ -23,10 +23,10 @@ public class tireTour : MonoBehaviour {
 
 	public void tireProjectile(int force){
 		GameObject gameObject;
-		int rand = random.Next(0,10);
-		if(rand < 4)
+		int rand = random.Next(0,20);
+		if(rand < 9)
 			gameObject = tour1;
-		else if(rand < 8)
+		else if(rand < 18)
 			gameObject = tour2;
 		else
 			gameObject = chaise;

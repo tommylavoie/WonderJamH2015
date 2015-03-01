@@ -144,9 +144,6 @@ public class ForceUI : MonoBehaviour
 		tireTour script = joueur.GetComponent<tireTour>();
 		script.flipTable(finalValue);
 		playSound ();
-		playSound ();
-		playSound();
-		playSound();
 		Invoke("end", 3);
 	}
 }
