@@ -4,7 +4,7 @@ using System.Collections;
 public class vueTactic : MonoBehaviour {
 	Vector3 pos;
 	bool started = false;
-	int step = 4;
+	int step = 1;
 	bool invoked = false;
 
 	// Use this for initialization
@@ -15,6 +15,7 @@ public class vueTactic : MonoBehaviour {
 		pos.z = 26.4f;
 		this.gameObject.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
 		this.gameObject.transform.position = pos;
+
 	}
 
 	void addStep()

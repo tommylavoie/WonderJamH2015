@@ -46,8 +46,8 @@ public class tireTour : MonoBehaviour {
 		item.transform.localRotation = this.gameObject.transform.localRotation;
 		Vector3 pos = item.transform.position;
 		pos.x -= 1.147f;
-		pos.y += 0.422f;
-		pos.z += 0.414f;
+		pos.y -= 1.422f;
+		pos.z += 5.414f;
 		pos.y += 5f;
 		item.transform.localPosition = pos;
 		item.transform.position = pos;

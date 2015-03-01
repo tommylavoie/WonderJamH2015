@@ -7,10 +7,13 @@ public class EnemyScript : MonoBehaviour {
 	Map map;
 	Path path;
 	PathNode node;
+	Animator anim;
+	bool mort = false;
 
 	// Use this for initialization
 	void Start () {
 		map = Map.Instance;
+		anim = this.gameObject.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -18,8 +21,10 @@ public class EnemyScript : MonoBehaviour {
 	{
 		if(!map.isGameOver())
 		{
-			transform.LookAt(node.gameObject.transform.position);
-			transform.position = Vector3.MoveTowards (transform.position, node.gameObject.transform.position, 2 * Time.deltaTime);
+			if(!mort){
+				transform.LookAt(node.gameObject.transform.position);
+				transform.position = Vector3.MoveTowards (transform.position, node.gameObject.transform.position, 2 * Time.deltaTime);
+			}
 		}
         //transform.Translate(new Vector3(0, 0, 0.05f));
     }
@@ -31,7 +36,8 @@ public class EnemyScript : MonoBehaviour {
 
 	void OnTriggerEnter(Collider collision) {
 		if(collision.gameObject.name.Equals("F1")){
-			Destroy (this.gameObject);
+			anim.SetTrigger("Fini");
+			Invoke("detruire", 1.3f);
 		}
 		if (collision.tag != "Noeud") {
 			return;
@@ -43,7 +49,13 @@ public class EnemyScript : MonoBehaviour {
 
 	public void kill()
 	{
+		mort = true;
 		SoundEffectScript.Instance.MakeFillette_ohnonSound();
-		Destroy(gameObject);
+		anim.SetTrigger ("Mort");
+		Invoke("detruire", 2);
+	}
+
+	void detruire(){
+		Destroy (this.gameObject);
 	}
 }

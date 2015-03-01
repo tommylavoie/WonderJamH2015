@@ -1,0 +1,271 @@
+fileFormatVersion: 2
+guid: 9c8a7665e238efa4faa7b39443c15619
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: big_ankle_lf_jnt
+    100002: big_ankle_rt_jnt
+    100004: big_ball_lf_jnt
+    100006: big_ball_rt_jnt
+    100008: big_elbow_lf_jnt
+    100010: big_elbow_rt_jnt
+    100012: big_finger_end_lf_ctrl_grp
+    100014: big_finger_end_lf_jnt
+    100016: big_finger_end_rt_jnt
+    100018: big_finger_lf_jnt
+    100020: big_finger_rt_ctrl_grp
+    100022: big_finger_rt_jnt
+    100024: big_forearm_lf_jnt
+    100026: big_forearm_rt_jnt
+    100028: big_geo
+    100030: big_hand_lf_ctrl_grp
+    100032: big_hand_lf_jnt
+    100034: big_hand_rt_ctrl_grp
+    100036: big_hand_rt_jnt
+    100038: big_head_ctrl_grp
+    100040: big_head_jnt
+    100042: big_heel_lf_jnt
+    100044: big_heel_rt_jnt
+    100046: big_hip_lf_jnt
+    100048: big_hip_rt_jnt
+    100050: big_knee_lf_jnt
+    100052: big_knee_rt_jnt
+    100054: //RootNode
+    100056: big_neck_ctrl_grp
+    100058: big_neck_jnt
+    100060: big_pad_ctrl_grp
+    100062: big_pad_lf_jnt
+    100064: big_pelvis_jnt
+    100066: big_root_jnt_ctrl
+    100068: big_shoulder_lf_jnt
+    100070: big_shoulder_rt_jnt
+    100072: big_slipneB_jnt
+    100074: big_splineA_jnt
+    100076: big_toe_lf_jnt
+    100078: big_toe_rt_jnt
+    100080: big_wrist_lf_jnt
+    100082: big_wrist_rt_jnt
+    100084: canon
+    100086: canon_lf_jnt
+    100088: canon_rt_jnt
+    400000: big_ankle_lf_jnt
+    400002: big_ankle_rt_jnt
+    400004: big_ball_lf_jnt
+    400006: big_ball_rt_jnt
+    400008: big_elbow_lf_jnt
+    400010: big_elbow_rt_jnt
+    400012: big_finger_end_lf_ctrl_grp
+    400014: big_finger_end_lf_jnt
+    400016: big_finger_end_rt_jnt
+    400018: big_finger_lf_jnt
+    400020: big_finger_rt_ctrl_grp
+    400022: big_finger_rt_jnt
+    400024: big_forearm_lf_jnt
+    400026: big_forearm_rt_jnt
+    400028: big_geo
+    400030: big_hand_lf_ctrl_grp
+    400032: big_hand_lf_jnt
+    400034: big_hand_rt_ctrl_grp
+    400036: big_hand_rt_jnt
+    400038: big_head_ctrl_grp
+    400040: big_head_jnt
+    400042: big_heel_lf_jnt
+    400044: big_heel_rt_jnt
+    400046: big_hip_lf_jnt
+    400048: big_hip_rt_jnt
+    400050: big_knee_lf_jnt
+    400052: big_knee_rt_jnt
+    400054: //RootNode
+    400056: big_neck_ctrl_grp
+    400058: big_neck_jnt
+    400060: big_pad_ctrl_grp
+    400062: big_pad_lf_jnt
+    400064: big_pelvis_jnt
+    400066: big_root_jnt_ctrl
+    400068: big_shoulder_lf_jnt
+    400070: big_shoulder_rt_jnt
+    400072: big_slipneB_jnt
+    400074: big_splineA_jnt
+    400076: big_toe_lf_jnt
+    400078: big_toe_rt_jnt
+    400080: big_wrist_lf_jnt
+    400082: big_wrist_rt_jnt
+    400084: canon
+    400086: canon_lf_jnt
+    400088: canon_rt_jnt
+    4300000: big_geo
+    4300002: canon
+    7400000: Launch
+    9500000: //RootNode
+    13700000: big_geo
+    13700002: canon
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Launch
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: big_geo
+        weight: 1
+      - path: big_root_jnt_ctrl
+        weight: 1
+      - path: big_root_jnt_ctrl/big_pelvis_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_pelvis_jnt/big_hip_lf_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_pelvis_jnt/big_hip_lf_jnt/big_knee_lf_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_pelvis_jnt/big_hip_lf_jnt/big_knee_lf_jnt/big_ankle_lf_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_pelvis_jnt/big_hip_lf_jnt/big_knee_lf_jnt/big_ankle_lf_jnt/big_heel_lf_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_pelvis_jnt/big_hip_lf_jnt/big_knee_lf_jnt/big_ankle_lf_jnt/big_heel_lf_jnt/big_ball_lf_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_pelvis_jnt/big_hip_lf_jnt/big_knee_lf_jnt/big_ankle_lf_jnt/big_heel_lf_jnt/big_ball_lf_jnt/big_toe_lf_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_pelvis_jnt/big_hip_rt_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_pelvis_jnt/big_hip_rt_jnt/big_knee_rt_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_pelvis_jnt/big_hip_rt_jnt/big_knee_rt_jnt/big_ankle_rt_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_pelvis_jnt/big_hip_rt_jnt/big_knee_rt_jnt/big_ankle_rt_jnt/big_heel_rt_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_pelvis_jnt/big_hip_rt_jnt/big_knee_rt_jnt/big_ankle_rt_jnt/big_heel_rt_jnt/big_ball_rt_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_pelvis_jnt/big_hip_rt_jnt/big_knee_rt_jnt/big_ankle_rt_jnt/big_heel_rt_jnt/big_ball_rt_jnt/big_toe_rt_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_neck_ctrl_grp
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_neck_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_neck_jnt/big_head_ctrl_grp
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_neck_jnt/big_head_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_pad_ctrl_grp
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_pad_lf_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_shoulder_lf_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_shoulder_lf_jnt/big_elbow_lf_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_shoulder_lf_jnt/big_elbow_lf_jnt/big_forearm_lf_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_shoulder_lf_jnt/big_elbow_lf_jnt/big_forearm_lf_jnt/big_wrist_lf_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_shoulder_lf_jnt/big_elbow_lf_jnt/big_forearm_lf_jnt/big_wrist_lf_jnt/big_hand_lf_ctrl_grp
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_shoulder_lf_jnt/big_elbow_lf_jnt/big_forearm_lf_jnt/big_wrist_lf_jnt/big_hand_lf_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_shoulder_lf_jnt/big_elbow_lf_jnt/big_forearm_lf_jnt/big_wrist_lf_jnt/big_hand_lf_jnt/big_finger_end_lf_ctrl_grp
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_shoulder_lf_jnt/big_elbow_lf_jnt/big_forearm_lf_jnt/big_wrist_lf_jnt/big_hand_lf_jnt/big_finger_lf_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_shoulder_lf_jnt/big_elbow_lf_jnt/big_forearm_lf_jnt/big_wrist_lf_jnt/big_hand_lf_jnt/big_finger_lf_jnt/big_finger_end_lf_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_shoulder_rt_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_shoulder_rt_jnt/big_elbow_rt_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_shoulder_rt_jnt/big_elbow_rt_jnt/big_forearm_rt_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_shoulder_rt_jnt/big_elbow_rt_jnt/big_forearm_rt_jnt/big_wrist_rt_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_shoulder_rt_jnt/big_elbow_rt_jnt/big_forearm_rt_jnt/big_wrist_rt_jnt/big_hand_rt_ctrl_grp
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_shoulder_rt_jnt/big_elbow_rt_jnt/big_forearm_rt_jnt/big_wrist_rt_jnt/big_hand_rt_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_shoulder_rt_jnt/big_elbow_rt_jnt/big_forearm_rt_jnt/big_wrist_rt_jnt/big_hand_rt_jnt/big_finger_rt_ctrl_grp
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_shoulder_rt_jnt/big_elbow_rt_jnt/big_forearm_rt_jnt/big_wrist_rt_jnt/big_hand_rt_jnt/big_finger_rt_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_shoulder_rt_jnt/big_elbow_rt_jnt/big_forearm_rt_jnt/big_wrist_rt_jnt/big_hand_rt_jnt/big_finger_rt_jnt/big_finger_end_rt_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_shoulder_rt_jnt/big_elbow_rt_jnt/big_forearm_rt_jnt/big_wrist_rt_jnt/big_hand_rt_jnt/big_finger_rt_jnt/big_finger_end_rt_jnt/canon_rt_jnt
+        weight: 1
+      - path: big_root_jnt_ctrl/big_splineA_jnt/big_slipneB_jnt/big_shoulder_rt_jnt/big_elbow_rt_jnt/big_forearm_rt_jnt/big_wrist_rt_jnt/big_hand_rt_jnt/big_finger_rt_jnt/big_finger_end_rt_jnt/canon_rt_jnt/canon_lf_jnt
+        weight: 1
+      - path: canon
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1.5
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
