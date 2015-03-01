@@ -4,8 +4,9 @@ using System.Collections;
 public class vueTactic : MonoBehaviour {
 	Vector3 pos;
 	bool started = false;
-	int step = 4;
+	int step = 1;
 	bool invoked = false;
+	Quaternion actualView;
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +16,7 @@ public class vueTactic : MonoBehaviour {
 		pos.z = 26.4f;
 		this.gameObject.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
 		this.gameObject.transform.position = pos;
+		actualView = Quaternion.AngleAxis(25, Vector3.right);
 	}
 
 	void addStep()
@@ -38,7 +40,7 @@ public class vueTactic : MonoBehaviour {
 				pos.x = 0f;
 				pos.y = 15.52f;
 				pos.z = -35.91f;
-				this.gameObject.transform.rotation = Quaternion.AngleAxis(25, Vector3.right);
+				this.gameObject.transform.rotation = actualView;
 				this.gameObject.transform.position = pos;	
 
 			}
@@ -86,5 +88,10 @@ public class vueTactic : MonoBehaviour {
 				Map.Instance.setStarted(true);
 			}
 		}
+	}
+
+	void LateUpdate()
+	{
+
 	}
 }
