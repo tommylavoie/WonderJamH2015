@@ -36,9 +36,9 @@ public class vueTactic : MonoBehaviour {
 			}
 			else {
 				pos.x = 0f;
-				pos.y = 13.49f;
-				pos.z = -28.65f;
-				this.gameObject.transform.rotation = Quaternion.AngleAxis(22, Vector3.right);
+				pos.y = 15.52f;
+				pos.z = -35.91f;
+				this.gameObject.transform.rotation = Quaternion.AngleAxis(25, Vector3.right);
 				this.gameObject.transform.position = pos;	
 
 			}
