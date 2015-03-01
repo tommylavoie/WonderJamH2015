@@ -113,6 +113,11 @@ public class ForceUI : MonoBehaviour
 		}
 	}
 
+	void end()
+	{
+		Map.Instance.setGameOver(true);
+	}
+
 	void tirer()
 	{
 		tireTour script = joueur.GetComponent<tireTour>();
@@ -142,6 +147,6 @@ public class ForceUI : MonoBehaviour
 		playSound ();
 		playSound();
 		playSound();
-		Map.Instance.setGameOver(true);
+		Invoke("end", 3);
 	}
 }
